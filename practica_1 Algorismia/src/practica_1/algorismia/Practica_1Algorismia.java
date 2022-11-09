@@ -12,7 +12,7 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
 
 
     public Practica_1Algorismia(){
-        this.setTitle("Gestor col·legi");
+        this.setTitle("GESTOR COL·LEGI");
         this.setSize(1000, 1000);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
