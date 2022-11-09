@@ -6,10 +6,8 @@ package practica_1.algorismia;
 
 /**
  *
- * @author Usuario
+ * @author jordi
  */
-public interface Interficie_llistes {
-    public abstract void crear_Llista();
-    public abstract void eliminar_Llista();
-    public abstract void llistar_Llista();
+public interface Interficie_elements {
+    
 }

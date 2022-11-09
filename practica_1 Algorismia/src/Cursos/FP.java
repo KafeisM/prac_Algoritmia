@@ -1,14 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Cursos;
+
+import practica_1.algorismia.Interficie_elements;
 
 /**
  *
  * @author Usuario
  */
-public class FP extends Cursos {
+public class FP extends Cursos implements Interficie_elements {
     private Enum_Especialitats especialitat;
     
     public FP(String nom, int codi,Enum_Especialitats esp ) {

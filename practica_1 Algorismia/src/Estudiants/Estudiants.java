@@ -1,14 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Estudiants;
+
+import practica_1.algorismia.Interficie_elements;
 
 /**
  *
- * @author Usuario
+ * @author jordi
  */
-public class Estudiants {
+public class Estudiants implements Interficie_elements{
     String nom;
     int DNI;
+
+    @Override
+    public void eliminar_Element() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void donar_Alta() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void donar_Baixa() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
