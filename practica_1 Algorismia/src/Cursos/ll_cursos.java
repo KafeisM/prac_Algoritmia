@@ -8,7 +8,7 @@ import practica_1.algorismia.Interficie_llistes;
  * @author Jordi
  */
 public class ll_cursos implements Interficie_llistes {
-    
+    private Cursos element_curs;
 
     
     @Override
