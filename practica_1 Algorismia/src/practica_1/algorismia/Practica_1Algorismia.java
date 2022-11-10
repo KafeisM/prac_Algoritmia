@@ -2,6 +2,7 @@ package practica_1.algorismia;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 import javax.swing.JFrame;
 
 /**
@@ -17,6 +18,20 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(Practica_1Algorismia.EXIT_ON_CLOSE);
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1. Alta curs\n"
+                + "2. Matricular estudiant\n"
+                + "3. Baixa curs\n"
+                + "4. Baixa assignatura\n"
+                + "5. Alta curs\n");
+        boolean sortir = false;
+        int opcio;
+        while (!sortir){
+            switch(opcio){
+                
+            }
+        }
     }
     
      
