@@ -10,6 +10,8 @@ import practica_1.algorismia.Interficie_elements;
 public class Cursos implements Interficie_elements {
     protected String nom_curs;
     protected int codi_curs;
+    protected ll_assignatures_ob_curs assigOb;
+    protected ll_assignatures_op_curs assigOp;
     
     public Cursos(String nom, int codi){
         this.codi_curs = codi;

@@ -6,5 +6,5 @@ package practica_1.algorismia;
  */
 public interface Interficie_llistes {
     public abstract void eliminar_Llista();
-    public abstract void llistar_Llista();
+    public abstract String ll_toString();
 }
