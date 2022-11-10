@@ -14,15 +14,15 @@ public class ll_cursos implements Interficie_llistes {
         llista_cursos = new Cursos[num_cursos];
     }
     
+    public void inserirCurs(int ind, Cursos c){
+        llista_cursos[ind] = c;
+    }
+    
     @Override
     public void llistar_Llista() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void crear_Llista() {
-       
-    }
 
     @Override
     public void eliminar_Llista() {

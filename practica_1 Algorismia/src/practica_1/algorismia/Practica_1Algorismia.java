@@ -1,5 +1,14 @@
 package practica_1.algorismia;
 
+import Cursos.Batxiller;
+import Cursos.Enum_Cursos;
+import static Cursos.Enum_Cursos.PRIMER;
+import static Cursos.Enum_Cursos.SEGON;
+import Cursos.Enum_Especialitats;
+import static Cursos.Enum_Especialitats.ELECTRÓNICA;
+import static Cursos.Enum_Especialitats.INFORMÀTICA;
+import static Cursos.Enum_Especialitats.MECÀNICA;
+import Cursos.FP;
 import Cursos.ll_cursos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,18 +35,21 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
         this.setDefaultCloseOperation(Practica_1Algorismia.EXIT_ON_CLOSE);
         
         boolean sortir = false;
-        int opcio = entrada_Int("1. Alta curs\n"
+        String menu = "1. Alta curs\n"
                 + "2. Matricular estudiant\n"
                 + "3. Baixa curs\n"
                 + "4. Baixa assignatura\n"
                 + "5. Llistar assignatures d'un curs\n"
                 + "6. Curs al que pertany una assignatura\n"
                 + "7. Assignatures d'un estudiant\n"
-                + "Opcio: ");
+                + "Opcio: ";
+        
+        int opcio = entrada_Int(menu);
         while (!sortir){
             switch(opcio){
                 case 1:
                     altaCurs();
+                    opcio = entrada_Int(menu);
                     break;
                 case 2:
                     
@@ -50,6 +62,7 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
                     break;
                 case 5:
                     assignaturesCurs();
+                    opcio = entrada_Int(menu);
                     break;
                 case 6:
                     
@@ -64,7 +77,67 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
     }
     
     private static void altaCurs(){
-        ll_cursos llista_cursos = new ll_cursos(entrada_Int("Quants de cursos vols introduir? "));
+        int num_curs = entrada_Int("Quants de cursos vols introduir? ");
+        String nom;
+        int codi;
+        ll_cursos llista_cursos = new ll_cursos(num_curs);
+        
+        for(int i = 0; i < num_curs; i++){
+            if(entrada_Int("Introduix quin tipus de curs es\n"
+                    + "1. Formació professional\n"
+                    + "2. Batxiller") == 1){
+                //crear curs de FP
+                Enum_Especialitats esp = null;
+                nom = entrada_String("Introdueix el nom del curs");
+                codi = entrada_Int("Introdueix el codi del curs");
+                
+                switch (entrada_Int("Tria una especialitat del FP\n"
+                        + "1. Mecànica\n"
+                        + "2. Electrònica\n"
+                        + "3. Informàtica")){
+                    case 1:
+                        esp = MECÀNICA;
+                        break;
+                    case 2:
+                        esp = ELECTRÓNICA;
+                        break;
+                    case 3:
+                        esp = INFORMÀTICA;
+                        
+                }
+                
+                FP curs_FP = new FP(nom,codi,esp);
+                llista_cursos.inserirCurs(i, curs_FP);
+                
+                System.out.println("*********************");
+                
+            }else{
+                //crear curs de batxiller
+                Enum_Cursos c = null;
+                nom = entrada_String("Introdueix el nom del curs");
+                codi = entrada_Int("Introdueix el codi del curs");
+                
+                switch (entrada_Int("Tria quin any es de Batxiller\n"
+                        + "1. Primer\n"
+                        + "2. Segon")){
+                    case 1:
+                        c = PRIMER;
+                        break;
+                    case 2:
+                        c = SEGON;
+                        break;
+                    
+                }
+                
+                Batxiller curs_batx = new Batxiller(nom,codi,c);
+                llista_cursos.inserirCurs(i, curs_batx);
+                
+                System.out.println("*********************");
+                
+            }
+        }
+        
+        
     }
     
     private static void assignaturesCurs(){
@@ -93,8 +166,6 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             System.out.println(entrada);
             sortida = Integer.parseInt(br.readLine());
-            
-            return sortida;
         } catch (IOException ex) {
             Logger.getLogger(Practica_1Algorismia.class.getName()).log(Level.SEVERE, null, ex);
         }
