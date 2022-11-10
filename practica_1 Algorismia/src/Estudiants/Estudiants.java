@@ -11,10 +11,6 @@ public class Estudiants implements Interficie_elements{
     String nom;
     int DNI;
 
-    @Override
-    public void eliminar_Element() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public void donar_Alta() {
