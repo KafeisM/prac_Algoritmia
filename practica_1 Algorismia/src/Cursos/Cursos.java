@@ -23,7 +23,7 @@ public class Cursos implements Interficie_elements {
 
     @Override
     public void donar_Alta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+ 
     }
 
     @Override
