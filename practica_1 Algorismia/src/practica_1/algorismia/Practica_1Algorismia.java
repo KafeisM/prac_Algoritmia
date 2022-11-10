@@ -24,17 +24,44 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
                 + "2. Matricular estudiant\n"
                 + "3. Baixa curs\n"
                 + "4. Baixa assignatura\n"
-                + "5. Alta curs\n");
+                + "5. Llistar assignatures d'un curs\n"
+                + "6. Curs al que pertany una assignatura\n"
+                + "7. Assignatures d'un estudiant\n"
+                + "Opcio: ");
         boolean sortir = false;
-        int opcio;
+        int opcio = sc.nextInt();
         while (!sortir){
             switch(opcio){
-                
+                case 1:
+                    altaCurs();
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    
+                    break;
+                case 4:
+                    
+                    break;
+                case 5:
+                    assignaturesCurs();
+                    break;
+                case 6:
+                    
+                    break;
+                case 7:
+                    
+                    break;
+                default:
+                    sortir = true;
             }
         }
     }
     
-     
+    private static void assignaturesCurs(){
+        
+    } 
     
     public static void main(String[] args) {
         Practica_1Algorismia et = new Practica_1Algorismia();
