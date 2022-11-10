@@ -1,6 +1,7 @@
 
 package Cursos;
 
+import Assignatures.Assignatures;
 import practica_1.algorismia.Interficie_llistes;
 
 /**
@@ -9,6 +10,11 @@ import practica_1.algorismia.Interficie_llistes;
  */
 public class ll_assignatures_op_curs implements Interficie_llistes {
 
+    protected Assignatures [] llista;
+    
+    public ll_assignatures_op_curs(int longitud){
+        llista = new Assignatures[longitud];
+    }
     @Override
     public void crear_Llista() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -20,7 +26,7 @@ public class ll_assignatures_op_curs implements Interficie_llistes {
     }
 
     @Override
-    public void llistar_Llista() {
+    public String ll_toString() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
