@@ -60,6 +60,9 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
     }
     
     private static void assignaturesCurs(){
+        Scanner sc = new Scanner (System.in);
+        System.out.println("Nom del curs: ");
+        String nom_curs = sc.nextLine();
         
     } 
     
