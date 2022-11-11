@@ -12,11 +12,9 @@ import practica_1.algorismia.Interficie_llistes;
 public class ll_cursos implements Interficie_llistes {
     
     private final ArrayList <Cursos> llista_cursos ;
-    private int longitud;
       
-    public ll_cursos(int num_cursos){
+    public ll_cursos(){
         llista_cursos = new ArrayList <Cursos>();
-        longitud = num_cursos;
     }
 
     @Override
@@ -26,7 +24,15 @@ public class ll_cursos implements Interficie_llistes {
 
     @Override
     public int get_tamany() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return llista_cursos.size();
+    }
+    
+    public Cursos getCurs(String nom){
+        int cont = 0;
+        while ((cont < llista_cursos.size())&&(llista_cursos.get(cont).to_String() != nom)){
+            cont++;
+        }
+        return llista_cursos.get(cont);
     }
 
     @Override
@@ -36,7 +42,11 @@ public class ll_cursos implements Interficie_llistes {
 
     @Override
     public String ll_toString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String res = "";
+        for (int i=0; i<llista_cursos.size();i++){
+            res += " [" + llista_cursos.get(i).toString() + "] ";
+        }
+        return res;
     }
 
    

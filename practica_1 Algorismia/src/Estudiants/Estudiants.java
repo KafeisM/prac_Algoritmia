@@ -15,6 +15,7 @@ public class Estudiants extends Element{
     public Estudiants(String n, int num) {
         super(n);
         DNI = num;
+        seg = null;
     }
     
     public void to_String(){

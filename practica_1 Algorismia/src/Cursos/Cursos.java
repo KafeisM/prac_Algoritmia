@@ -19,6 +19,13 @@ public class Cursos extends Element {
         codi_curs = cod;    
     }
     
+    public ll_assignatures_ob_curs getassigOb(){
+        return assigOb;
+    }
+    
+    public ll_assignatures_op_curs getassigOp(){
+        return assigOp;
+    }
     
     public String to_String(){
         return this.obtenir_nom();

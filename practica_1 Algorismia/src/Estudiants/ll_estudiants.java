@@ -9,6 +9,10 @@ import practica_1.algorismia.Interficie_llistes;
  */
 public class ll_estudiants implements Interficie_llistes {
     private Estudiants capçalera_estudiant;
+    
+    public ll_estudiants(){
+        capçalera_estudiant = null;
+    }
 
     @Override
     public void eliminar_Llista() {

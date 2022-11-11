@@ -1,6 +1,7 @@
 package practica_1.algorismia;
 
 import Cursos.Batxiller;
+import Cursos.Cursos;
 import Cursos.Enum_Cursos;
 import static Cursos.Enum_Cursos.PRIMER;
 import static Cursos.Enum_Cursos.SEGON;
@@ -62,7 +63,7 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
                     
                     break;
                 case 5:
-                    estassigCurs();
+                    est_assig_Curs();
                     opcio = entrada_Int(menu);
                     break;
                 case 6:
@@ -81,7 +82,6 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
         int num_curs = entrada_Int("Quants de cursos vols introduir? ");
         String nom;
         int codi;
-        llista_cursos = new ll_cursos(num_curs);
         
         for(int i = 0; i < num_curs; i++){
             if(entrada_Int("Introduix quin tipus de curs es\n"
@@ -141,10 +141,11 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
         
     }
     
-    private static void estassigCurs(){
+    private static void est_assig_Curs(){
 
         String nom_curs = entrada_String("Nom del curs: ");
-        
+        Cursos curs = llista_cursos.getCurs(nom_curs);
+           
     } 
     
     private static String entrada_String(String entrada){
@@ -174,6 +175,7 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
     
     public static void main(String[] args) {
         Practica_1Algorismia et = new Practica_1Algorismia();
+        llista_cursos = new ll_cursos();
         et.setVisible(true);
     }
 

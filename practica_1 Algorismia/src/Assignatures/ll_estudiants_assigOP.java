@@ -2,6 +2,7 @@
 package Assignatures;
 
 import Cursos.Cursos;
+import Estudiants.Estudiants;
 import practica_1.algorismia.Element;
 import practica_1.algorismia.Interficie_llistes;
 
@@ -11,7 +12,12 @@ import practica_1.algorismia.Interficie_llistes;
  */
 public class ll_estudiants_assigOP implements Interficie_llistes {
 
-
+    private Estudiants capçalera_est;
+    
+    public ll_estudiants_assigOP(){
+        capçalera_est = null;
+    }
+    
     @Override
     public void eliminar_Llista() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -24,7 +30,14 @@ public class ll_estudiants_assigOP implements Interficie_llistes {
 
     @Override
     public int get_tamany() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int res = 0;
+        Estudiants aux = new Estudiants("zzz",0);
+        aux.setSeg(capçalera_est);
+        while(aux.getSeg()!=null){
+            aux.setSeg(aux.getSeg().getSeg());
+            res++;
+        }
+        return res;
     }
 
     @Override
