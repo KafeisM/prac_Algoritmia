@@ -34,10 +34,20 @@ public class ll_cursos implements Interficie_llistes {
         return res;
     }
 
-
     @Override
     public void eliminar_Llista() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public int get_tamany() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void insertar_elementCurs(int i, Cursos c) {
+        llista_cursos[i] = c;
+    }
+    
     
 }

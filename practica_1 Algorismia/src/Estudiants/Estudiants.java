@@ -1,22 +1,24 @@
 
 package Estudiants;
 
-import practica_1.algorismia.Interficie_elements;
+import practica_1.algorismia.Element;
 
 /**
  *
  * @author jordi
  */
-public class Estudiants implements Interficie_elements{
+public class Estudiants extends Element{
     
-    String nom;
     int DNI;
     Estudiants seg;
 
-    public Estudiants(String nom, int DNI){
-        this.nom = nom;
-        this.DNI = DNI;
-        seg = null;
+    public Estudiants(String n, int num) {
+        super(n);
+        DNI = num;
+    }
+    
+    public void to_String(){
+        super.obtenir_nom();
     }
     
     public void setSeg(Estudiants est){
@@ -27,17 +29,4 @@ public class Estudiants implements Interficie_elements{
         return seg;
     }
     
-    public String toString(){
-        return nom;
-    }
-    
-    @Override
-    public void donar_Alta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void donar_Baixa() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

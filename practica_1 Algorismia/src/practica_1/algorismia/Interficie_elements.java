@@ -8,4 +8,6 @@ package practica_1.algorismia;
 public interface Interficie_elements {
     public abstract void donar_Alta();
     public abstract void donar_Baixa();
+    //metodes geters
+    
 }

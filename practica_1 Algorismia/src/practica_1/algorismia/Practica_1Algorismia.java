@@ -26,7 +26,7 @@ import javax.swing.JFrame;
  */
 public class Practica_1Algorismia extends JFrame implements ActionListener{
 
-    private ll_cursos ll_cursos;
+    static private ll_cursos llista_cursos;
     
     public Practica_1Algorismia(){
         this.setTitle("GESTOR COL·LEGI");
@@ -81,7 +81,7 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
         int num_curs = entrada_Int("Quants de cursos vols introduir? ");
         String nom;
         int codi;
-        ll_cursos llista_cursos = new ll_cursos(num_curs);
+        llista_cursos = new ll_cursos(num_curs);
         
         for(int i = 0; i < num_curs; i++){
             if(entrada_Int("Introduix quin tipus de curs es\n"

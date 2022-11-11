@@ -1,6 +1,7 @@
 
 package Assignatures;
 
+import Cursos.Cursos;
 import practica_1.algorismia.Interficie_llistes;
 
 /**
@@ -18,5 +19,17 @@ public class ll_estudiants_assigOB implements Interficie_llistes {
     public String ll_toString() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public int get_tamany() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void insertar_elementCurs(int i, Cursos c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
     
 }
