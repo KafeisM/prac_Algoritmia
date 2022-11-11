@@ -108,7 +108,7 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
                 }
                 
                 FP curs_FP = new FP(nom,codi,esp);
-                llista_cursos.inserirCurs(i, curs_FP);
+                llista_cursos.insertar_element(i, curs_FP);
                 
                 System.out.println("*********************");
                 
@@ -131,7 +131,7 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
                 }
                 
                 Batxiller curs_batx = new Batxiller(nom,codi,c);
-                llista_cursos.inserirCurs(i, curs_batx);
+                llista_cursos.insertar_element(i, curs_batx);
                 
                 System.out.println("*********************");
                 

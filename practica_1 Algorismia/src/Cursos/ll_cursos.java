@@ -1,6 +1,8 @@
 
 package Cursos;
 
+import java.util.ArrayList;
+import practica_1.algorismia.Element;
 import practica_1.algorismia.Interficie_llistes;
 
 /**
@@ -9,29 +11,12 @@ import practica_1.algorismia.Interficie_llistes;
  */
 public class ll_cursos implements Interficie_llistes {
     
-    private final Cursos [] llista_cursos ;
+    private final ArrayList <Cursos> llista_cursos ;
     private int longitud;
       
     public ll_cursos(int num_cursos){
-        llista_cursos = new Cursos[num_cursos];
+        llista_cursos = new ArrayList <Cursos>();
         longitud = num_cursos;
-    }
-    
-    public Cursos getCurs(int pos){
-        return llista_cursos[pos];
-    }
-    
-    public void inserirCurs(int ind, Cursos c){
-        llista_cursos[ind] = c;
-    }
-    
-    @Override
-    public String ll_toString() {
-        String res = "";
-        for (int i=0; i<longitud; i++){
-            res += " [" + llista_cursos[i].toString() + "] |";
-        }
-        return res;
     }
 
     @Override
@@ -45,9 +30,16 @@ public class ll_cursos implements Interficie_llistes {
     }
 
     @Override
-    public void insertar_elementCurs(int i, Cursos c) {
-        llista_cursos[i] = c;
+    public void insertar_element(int i, Element el) {
+        llista_cursos.add(i, (Cursos) el);
     }
+
+    @Override
+    public String ll_toString() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
     
     
 }

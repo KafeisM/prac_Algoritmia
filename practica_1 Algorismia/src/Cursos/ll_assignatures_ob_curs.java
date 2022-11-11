@@ -1,6 +1,7 @@
 
 package Cursos;
 
+import practica_1.algorismia.Element;
 import practica_1.algorismia.Interficie_llistes;
 
 /**
@@ -25,8 +26,9 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+
     @Override
-    public void insertar_elementCurs(int i, Cursos c) {
+    public void insertar_element(int i, Element el) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

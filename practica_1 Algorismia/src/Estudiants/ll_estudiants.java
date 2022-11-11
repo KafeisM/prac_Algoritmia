@@ -1,6 +1,6 @@
 package Estudiants;
 
-import Cursos.Cursos;
+import practica_1.algorismia.Element;
 import practica_1.algorismia.Interficie_llistes;
 
 /**
@@ -33,7 +33,7 @@ public class ll_estudiants implements Interficie_llistes {
     }
 
     @Override
-    public void insertar_elementCurs(int i, Cursos c) {
+    public void insertar_element(int i, Element el) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
