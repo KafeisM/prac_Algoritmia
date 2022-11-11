@@ -14,6 +14,10 @@ public class Assignatures implements Interficie_elements {
         this.nom_assignatura = nom;
         this.codi_assignatura = codi;
     }
+    
+    public String toString(){
+        return nom_assignatura;
+    }
 
     @Override
     public void donar_Alta() {

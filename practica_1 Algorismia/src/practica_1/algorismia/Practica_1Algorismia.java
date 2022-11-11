@@ -26,7 +26,8 @@ import javax.swing.JFrame;
  */
 public class Practica_1Algorismia extends JFrame implements ActionListener{
 
-
+    private ll_cursos ll_cursos;
+    
     public Practica_1Algorismia(){
         this.setTitle("GESTOR COL·LEGI");
         this.setSize(1000, 1000);
@@ -61,7 +62,7 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
                     
                     break;
                 case 5:
-                    assignaturesCurs();
+                    estassigCurs();
                     opcio = entrada_Int(menu);
                     break;
                 case 6:
@@ -140,7 +141,7 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
         
     }
     
-    private static void assignaturesCurs(){
+    private static void estassigCurs(){
 
         String nom_curs = entrada_String("Nom del curs: ");
         
