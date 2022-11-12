@@ -13,17 +13,12 @@ import practica_1.algorismia.Interficie_llistes;
 public class ll_assignatures_op_curs implements Interficie_llistes {
 
     private ArrayList <Optatives> llista;
-    private int longitud;
     
     public ll_assignatures_op_curs(){
         llista = new ArrayList <Optatives>();
-        this.longitud = 0;
     }
     
-    public ll_assignatures_op_curs(int longitud){
-        llista = new ArrayList <Optatives>();
-        this.longitud = longitud;
-    }
+   
     
     public Optatives getAssig(int pos){
         return llista.get(pos);
@@ -51,7 +46,6 @@ public class ll_assignatures_op_curs implements Interficie_llistes {
     @Override
     public void insertar_element(int i, Element el) {
         llista.add(i,(Optatives) el);
-        longitud++;
     }
 
  

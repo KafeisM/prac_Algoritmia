@@ -39,14 +39,13 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
 
     @Override
     public int get_tamany() {
-        return longitud;
+        return llista.size();
     }
 
 
     @Override
     public void insertar_element(int i, Element el) {
         llista.add(i, (Obligatories) el);
-        longitud++;
     }
 
   

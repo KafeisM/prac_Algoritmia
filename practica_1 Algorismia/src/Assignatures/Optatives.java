@@ -1,8 +1,6 @@
 
 package Assignatures;
 
-import practica_1.algorismia.Interficie_elements;
-
 /**
  *
  * @author Jordi

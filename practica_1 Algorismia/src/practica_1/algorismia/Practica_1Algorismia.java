@@ -1,5 +1,10 @@
 package practica_1.algorismia;
 
+import Assignatures.Obligatories;
+import Assignatures.Optatives;
+import Assignatures.Perfil;
+import static Assignatures.Perfil.PRÀCTIC;
+import static Assignatures.Perfil.TEÒRIC;
 import Cursos.Batxiller;
 import Cursos.Cursos;
 import Cursos.Enum_Cursos;
@@ -83,11 +88,10 @@ public class Practica_1Algorismia {
     
     private static void altaCurs(){
         int num_curs = entrada_Int("Quants de cursos vols introduir? ");
-        String nom;
         int codi;
+        String nom;
         
-        
-        
+
         for(int i = 0; i < num_curs; i++){
             if(entrada_Int("Introduix quin tipus de curs es\n"
                     + "1. Formació professional\n"
@@ -112,10 +116,13 @@ public class Practica_1Algorismia {
                         
                 }
                 
-                FP curs_FP = new FP(nom,codi,esp);
+                FP curs_FP = new FP(nom,codi,esp);        
                 
+                introduir_Obligatories(curs_FP);
+                introduir_Optatives(curs_FP);
                 llista_cursos.insertar_element(i, curs_FP);
-
+                
+                
                 System.out.println("*********************");
                 
             }else{
@@ -136,7 +143,9 @@ public class Practica_1Algorismia {
                     
                 }
                 
-                Batxiller curs_batx = new Batxiller(nom,codi,c);             
+                Batxiller curs_batx = new Batxiller(nom,codi,c);   
+                introduir_Obligatories(curs_batx);
+                introduir_Optatives(curs_batx);
                 llista_cursos.insertar_element(i, curs_batx);
                 System.out.println("*********************");
                 
@@ -144,6 +153,54 @@ public class Practica_1Algorismia {
         }
         
         
+    }
+    
+    private static void introduir_Obligatories(Cursos c) {
+        int num_assig, codi, credits;
+        String nom;
+
+        num_assig = entrada_Int("Quantes assignatures obligatories vols introduir? ");
+
+        for (int j = 0; j < num_assig; j++) {
+            nom = entrada_String("Introdueix el nom de la assignatura:");
+            codi = entrada_Int("Introdueix el codi de la assignatura:");
+            credits = entrada_Int("Introdueix els credits de la assignatura:");
+            Obligatories ass_Ob = new Obligatories(nom, codi, credits);
+            c.afegir_ass(ass_Ob, j);
+            System.out.println("**************");
+
+        }
+
+        System.out.println("**************");
+    }
+
+    private static void introduir_Optatives(Cursos c) {
+        int num_assig, codi;
+        String nom;
+        Perfil per = null;
+
+        num_assig = entrada_Int("Quantes assignatures optatives vols introduir? ");
+
+        for (int j = 0; j < num_assig; j++) {
+            nom = entrada_String("Introdueix el nom de la assignatura:");
+            codi = entrada_Int("Introdueix el codi de la assignatura:");
+            switch (entrada_Int("Tria quin perfil es: \n"
+                    + "1. Primer\n"
+                    + "2. Segon")) {
+                case 1:
+                    per = TEÒRIC;
+                    break;
+                case 2:
+                    per = PRÀCTIC;
+                    break;
+            }
+            Optatives ass_Op = new Optatives(nom, codi, per);
+            c.afegir_ass(ass_Op, j);
+            System.out.println("**************");
+
+        }
+        System.out.println("**************");
+
     }
     
     private static void est_assig_Curs(){

@@ -1,5 +1,8 @@
 package Cursos;
 
+import Assignatures.Assignatures;
+import Assignatures.Obligatories;
+
 /**
  *
  * @author Jordi
@@ -7,6 +10,7 @@ package Cursos;
 
 public class Batxiller extends Cursos{
     private Enum_Cursos curs;
+
 
     public Batxiller(String nom, int codi, Enum_Cursos curs) {
         super(nom, codi);

@@ -15,6 +15,8 @@ public class Obligatories extends Assignatures{
         llista_est = new ll_estudiants_assigOB();
     }
     
+   
+    
     public String getll_Estudiants(){
         return llista_est.toString();
     }
