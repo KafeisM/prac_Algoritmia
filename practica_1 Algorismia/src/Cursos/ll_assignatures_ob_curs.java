@@ -25,6 +25,10 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
         this.longitud = longitud;
     }
     
+    public Obligatories getAssig(int pos){
+        return llista.get(pos);
+    }
+    
     @Override
     public void eliminar_Llista() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -34,7 +38,7 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
     public String ll_toString() {
         String res = "";
         for (int i=0; i<llista.size();i++){
-            res += " [" + llista.get(i).toString() + "] ";
+            res += "[" + llista.get(i).toString() + "]\n";
         }
         return res;
     }

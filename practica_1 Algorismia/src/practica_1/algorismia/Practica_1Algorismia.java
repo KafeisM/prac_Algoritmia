@@ -67,7 +67,7 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
                     opcio = entrada_Int(menu);
                     break;
                 case 6:
-                    
+                    est_curs_assig();
                     break;
                 case 7:
                     
@@ -145,8 +145,22 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
 
         String nom_curs = entrada_String("Nom del curs: ");
         Cursos curs = llista_cursos.getCurs(nom_curs);
-           
+        for (int i=0; i<curs.getassigOb().get_tamany(); i++){
+            System.out.println("Assignatura Ob " + i + ": " + curs.getassigOb().getAssig(i).to_String());
+            System.out.println(curs.getassigOb().getAssig(i).getll_Estudiants().toString());
+        }
+        
+        for (int i=0; i<curs.getassigOp().get_tamany(); i++){
+            System.out.println("Assignatura Op " + i + ": " + curs.getassigOp().getAssig(i).to_String());
+            System.out.println(curs.getassigOp().getAssig(i).getll_Estudiants().toString());
+        }
+        
     } 
+    
+    private static void est_curs_assig(){
+        String nom_assig = entrada_String("Nom de l'assignatura: ");
+        Assignatura assig;
+    }
     
     private static String entrada_String(String entrada){
         String sortida = null;

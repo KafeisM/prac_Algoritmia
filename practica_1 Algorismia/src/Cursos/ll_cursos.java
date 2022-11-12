@@ -44,7 +44,7 @@ public class ll_cursos implements Interficie_llistes {
     public String ll_toString() {
         String res = "";
         for (int i=0; i<llista_cursos.size();i++){
-            res += " [" + llista_cursos.get(i).toString() + "] ";
+            res += "[" + llista_cursos.get(i).toString() + "]\n";
         }
         return res;
     }

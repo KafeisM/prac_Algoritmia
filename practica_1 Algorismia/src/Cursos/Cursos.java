@@ -11,8 +11,8 @@ public class Cursos extends Element {
     
    
     protected int codi_curs;
-    protected ll_assignatures_ob_curs assigOb;
-    protected ll_assignatures_op_curs assigOp;
+    protected ll_assignatures_ob_curs ll_assigOb;
+    protected ll_assignatures_op_curs ll_assigOp;
 
     public Cursos(String n, int cod) {
         super(n);
@@ -20,11 +20,11 @@ public class Cursos extends Element {
     }
     
     public ll_assignatures_ob_curs getassigOb(){
-        return assigOb;
+        return ll_assigOb;
     }
     
     public ll_assignatures_op_curs getassigOp(){
-        return assigOp;
+        return ll_assigOp;
     }
     
     public String to_String(){
