@@ -13,17 +13,11 @@ import practica_1.algorismia.Interficie_llistes;
 public class ll_assignatures_ob_curs implements Interficie_llistes {
     
     private final ArrayList <Obligatories> llista;
-    private int longitud;
 
     public ll_assignatures_ob_curs(){
         llista = new ArrayList <Obligatories>();
-        this.longitud = 0;
     }
     
-    public ll_assignatures_ob_curs(int longitud){
-        llista = new ArrayList <Obligatories>();
-        this.longitud = longitud;
-    }
     
     public Obligatories getAssig(int pos){
         return llista.get(pos);
@@ -38,7 +32,7 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
     public String ll_toString() {
         String res = "";
         for (int i=0; i<llista.size();i++){
-            res += "[" + llista.get(i).toString() + "]\n";
+            res += "[" + llista.get(i).to_String() + "]\n";
         }
         return res;
     }

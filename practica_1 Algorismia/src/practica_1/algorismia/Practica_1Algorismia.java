@@ -25,16 +25,16 @@ import javax.swing.JFrame;
  *
  * @author Jordi
  */
-public class Practica_1Algorismia extends JFrame implements ActionListener{
+public class Practica_1Algorismia {
 
     static private ll_cursos llista_cursos;
     
     public Practica_1Algorismia(){
-        this.setTitle("GESTOR COL·LEGI");
+       /* this.setTitle("GESTOR COL·LEGI");
         this.setSize(1000, 1000);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.setDefaultCloseOperation(Practica_1Algorismia.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(Practica_1Algorismia.EXIT_ON_CLOSE); */
         
         boolean sortir = false;
         String menu = "1. Alta curs\n"
@@ -50,7 +50,9 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
         while (!sortir){
             switch(opcio){
                 case 1:
+                    llista_cursos = new ll_cursos();
                     altaCurs();
+                    System.out.println("Llista temporal:\n " + llista_cursos.ll_toString());
                     opcio = entrada_Int(menu);
                     break;
                 case 2:
@@ -74,6 +76,7 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
                     break;
                 default:
                     sortir = true;
+                    break;
             }
         }
     }
@@ -82,6 +85,8 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
         int num_curs = entrada_Int("Quants de cursos vols introduir? ");
         String nom;
         int codi;
+        
+        
         
         for(int i = 0; i < num_curs; i++){
             if(entrada_Int("Introduix quin tipus de curs es\n"
@@ -108,8 +113,9 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
                 }
                 
                 FP curs_FP = new FP(nom,codi,esp);
-                llista_cursos.insertar_element(i, curs_FP);
                 
+                llista_cursos.insertar_element(i, curs_FP);
+
                 System.out.println("*********************");
                 
             }else{
@@ -130,9 +136,8 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
                     
                 }
                 
-                Batxiller curs_batx = new Batxiller(nom,codi,c);
+                Batxiller curs_batx = new Batxiller(nom,codi,c);             
                 llista_cursos.insertar_element(i, curs_batx);
-                
                 System.out.println("*********************");
                 
             }
@@ -159,7 +164,7 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
     
     private static void est_curs_assig(){
         String nom_assig = entrada_String("Nom de l'assignatura: ");
-        Assignatura assig;
+        //Assignatura assig;
     }
     
     private static String entrada_String(String entrada){
@@ -189,13 +194,9 @@ public class Practica_1Algorismia extends JFrame implements ActionListener{
     
     public static void main(String[] args) {
         Practica_1Algorismia et = new Practica_1Algorismia();
-        llista_cursos = new ll_cursos();
-        et.setVisible(true);
+        //et.setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
     
 }

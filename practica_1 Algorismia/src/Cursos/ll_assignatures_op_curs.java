@@ -38,7 +38,7 @@ public class ll_assignatures_op_curs implements Interficie_llistes {
     public String ll_toString() {
         String res = "";
         for (int i=0; i<llista.size();i++){
-            res += "[" + llista.get(i).toString() + "]\n";
+            res += "[" + llista.get(i).to_String() + "]\n";
         }
         return res;
     }

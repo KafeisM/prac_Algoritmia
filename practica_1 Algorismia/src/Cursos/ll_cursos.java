@@ -34,6 +34,7 @@ public class ll_cursos implements Interficie_llistes {
         }
         return llista_cursos.get(cont);
     }
+    
 
     @Override
     public void insertar_element(int i, Element el) {
@@ -44,7 +45,7 @@ public class ll_cursos implements Interficie_llistes {
     public String ll_toString() {
         String res = "";
         for (int i=0; i<llista_cursos.size();i++){
-            res += "[" + llista_cursos.get(i).toString() + "]\n";
+            res += "[" + llista_cursos.get(i).to_String() + "]\n";
         }
         return res;
     }
