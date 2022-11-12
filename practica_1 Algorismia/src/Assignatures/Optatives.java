@@ -16,8 +16,12 @@ public class Optatives extends Assignatures{
         this.llista_est = new ll_estudiants_assigOP();
     }
     
-    public String getll_Estudiants(){
-        return llista_est.toString();
+    public ll_estudiants_assigOP getll_Estudiants(){
+        return llista_est;
+    }
+    
+    public String ll_toString(){
+        return llista_est.ll_toString();
     }
     
 }

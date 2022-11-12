@@ -14,10 +14,12 @@ public class Obligatories extends Assignatures{
         this.credits = credits;
         llista_est = new ll_estudiants_assigOB();
     }
-    
    
+    public ll_estudiants_assigOB getll_Estudiants(){
+        return llista_est;
+    }
     
-    public String getll_Estudiants(){
-        return llista_est.toString();
+    public String ll_toString(){
+        return llista_est.ll_toString();
     }
 }

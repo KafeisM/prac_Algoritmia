@@ -30,9 +30,10 @@ public class ll_cursos implements Interficie_llistes {
     public Cursos getCurs(String nom){
         int cont = 0;
         while ((cont < llista_cursos.size())&&(llista_cursos.get(cont).to_String() != nom)){
+            //System.out.println(llista_cursos.get(cont).to_String());
             cont++;
         }
-        return llista_cursos.get(cont);
+        return llista_cursos.get(cont-1);
     }
     
 

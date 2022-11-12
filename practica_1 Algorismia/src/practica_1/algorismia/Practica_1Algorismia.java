@@ -1,10 +1,12 @@
 package practica_1.algorismia;
 
+import Assignatures.Assignatures;
 import Assignatures.Obligatories;
 import Assignatures.Optatives;
 import Assignatures.Perfil;
 import static Assignatures.Perfil.PRÀCTIC;
 import static Assignatures.Perfil.TEÒRIC;
+import Assignatures.ll_assignatures;
 import Cursos.Batxiller;
 import Cursos.Cursos;
 import Cursos.Enum_Cursos;
@@ -16,6 +18,7 @@ import static Cursos.Enum_Especialitats.INFORMÀTICA;
 import static Cursos.Enum_Especialitats.MECÀNICA;
 import Cursos.FP;
 import Cursos.ll_cursos;
+import Estudiants.ll_estudiants;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -33,6 +36,8 @@ import javax.swing.JFrame;
 public class Practica_1Algorismia {
 
     static private ll_cursos llista_cursos;
+    static private ll_estudiants llista_estudiants;
+    static private ll_assignatures llista_assignatures;
     
     public Practica_1Algorismia(){
        /* this.setTitle("GESTOR COL·LEGI");
@@ -61,7 +66,8 @@ public class Practica_1Algorismia {
                     opcio = entrada_Int(menu);
                     break;
                 case 2:
-                    
+                    llista_estudiants = new ll_estudiants();
+                    mat_estudiants();
                     break;
                 case 3:
                     
@@ -155,6 +161,7 @@ public class Practica_1Algorismia {
         
     }
     
+    
     private static void introduir_Obligatories(Cursos c) {
         int num_assig, codi, credits;
         String nom;
@@ -203,25 +210,34 @@ public class Practica_1Algorismia {
 
     }
     
+    private static void mat_estudiants(){
+        
+    }
+    
     private static void est_assig_Curs(){
 
         String nom_curs = entrada_String("Nom del curs: ");
         Cursos curs = llista_cursos.getCurs(nom_curs);
+        if (curs.getassigOb().get_tamany() == 0){
+            System.out.println("No hi ha assig. OB");
+        }
         for (int i=0; i<curs.getassigOb().get_tamany(); i++){
             System.out.println("Assignatura Ob " + i + ": " + curs.getassigOb().getAssig(i).to_String());
-            System.out.println(curs.getassigOb().getAssig(i).getll_Estudiants().toString());
+            System.out.println(curs.getassigOb().getAssig(i).ll_toString());
         }
-        
+        if (curs.getassigOp().get_tamany() == 0){
+            System.out.println("No hi ha assig. OP");
+        }
         for (int i=0; i<curs.getassigOp().get_tamany(); i++){
             System.out.println("Assignatura Op " + i + ": " + curs.getassigOp().getAssig(i).to_String());
-            System.out.println(curs.getassigOp().getAssig(i).getll_Estudiants().toString());
+            System.out.println(curs.getassigOp().getAssig(i).ll_toString());
         }
         
     } 
     
     private static void est_curs_assig(){
         String nom_assig = entrada_String("Nom de l'assignatura: ");
-        //Assignatura assig;
+        Assignatures assig;
     }
     
     private static String entrada_String(String entrada){

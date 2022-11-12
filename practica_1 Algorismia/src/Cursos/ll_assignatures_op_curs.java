@@ -40,7 +40,7 @@ public class ll_assignatures_op_curs implements Interficie_llistes {
 
     @Override
     public int get_tamany() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.llista.size();
     }
 
     @Override
