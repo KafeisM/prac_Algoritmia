@@ -25,7 +25,14 @@ public class ll_estudiants_assigOP implements Interficie_llistes {
 
     @Override
     public String ll_toString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String res = "";
+        Estudiants aux = new Estudiants("zzz",0);
+        aux.setSeg(capçalera_est);
+        while (aux.getSeg()!=null){
+            res += "| [" + aux.getSeg().toString() + "] ";
+            aux.setSeg(aux.getSeg().getSeg());
+        }
+        return res;
     }
 
     @Override

@@ -1,5 +1,4 @@
 package practica_1.algorismia;
-
 import Assignatures.Assignatures;
 import Assignatures.Obligatories;
 import Assignatures.Optatives;
@@ -19,15 +18,11 @@ import static Cursos.Enum_Especialitats.MECÀNICA;
 import Cursos.FP;
 import Cursos.ll_cursos;
 import Estudiants.ll_estudiants;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 
 /**
  *
@@ -165,6 +160,8 @@ public class Practica_1Algorismia {
     private static void introduir_Obligatories(Cursos c) {
         int num_assig, codi, credits;
         String nom;
+        
+        ll_assignatures ass = new ll_assignatures();
 
         num_assig = entrada_Int("Quantes assignatures obligatories vols introduir? ");
 
@@ -174,8 +171,9 @@ public class Practica_1Algorismia {
             credits = entrada_Int("Introdueix els credits de la assignatura:");
             Obligatories ass_Ob = new Obligatories(nom, codi, credits);
             c.afegir_ass(ass_Ob, j);
-            System.out.println("**************");
-
+            
+            ass.insertar_element(j, ass_Ob);
+            
         }
 
         System.out.println("**************");
@@ -185,6 +183,9 @@ public class Practica_1Algorismia {
         int num_assig, codi;
         String nom;
         Perfil per = null;
+        
+        ll_assignatures ass = new ll_assignatures();
+
 
         num_assig = entrada_Int("Quantes assignatures optatives vols introduir? ");
 
@@ -203,7 +204,8 @@ public class Practica_1Algorismia {
             }
             Optatives ass_Op = new Optatives(nom, codi, per);
             c.afegir_ass(ass_Op, j);
-            System.out.println("**************");
+            
+            ass.insertar_element(j, ass_Op);
 
         }
         System.out.println("**************");
