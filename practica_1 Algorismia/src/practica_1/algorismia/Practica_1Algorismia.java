@@ -65,6 +65,7 @@ public class Practica_1Algorismia {
                 case 2:
                     llista_estudiants = new ll_estudiants();
                     mat_estudiants();
+                    opcio = entrada_Int(menu);
                     break;
                 case 3:
                     
@@ -78,6 +79,7 @@ public class Practica_1Algorismia {
                     break;
                 case 6:
                     est_curs_assig();
+                    opcio = entrada_Int(menu);
                     break;
                 case 7:
                     
@@ -163,7 +165,7 @@ public class Practica_1Algorismia {
         int num_assig, codi, credits;
         String nom;
         
-        ll_assignatures ass = new ll_assignatures();
+        llista_assignatures = new ll_assignatures();
 
         num_assig = entrada_Int("Quantes assignatures obligatories vols introduir? ");
 
@@ -174,7 +176,7 @@ public class Practica_1Algorismia {
             Obligatories ass_Ob = new Obligatories(nom, codi, credits);
             c.afegir_ass(ass_Ob, j);
             
-            ass.insertar_element(j, ass_Ob);
+            llista_assignatures.insertar_element(j, ass_Ob);
             
         }
 
@@ -186,7 +188,7 @@ public class Practica_1Algorismia {
         String nom;
         Perfil per = null;
         
-        ll_assignatures ass = new ll_assignatures();
+        llista_assignatures = new ll_assignatures();
 
 
         num_assig = entrada_Int("Quantes assignatures optatives vols introduir? ");
@@ -207,7 +209,7 @@ public class Practica_1Algorismia {
             Optatives ass_Op = new Optatives(nom, codi, per);
             c.afegir_ass(ass_Op, j);
             
-            ass.insertar_element(j, ass_Op);
+            llista_assignatures.insertar_element(j, ass_Op);
 
         }
         System.out.println("**************");
