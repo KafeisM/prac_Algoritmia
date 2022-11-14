@@ -1,5 +1,6 @@
 package practica_1.algorismia;
 import Assignatures.Assignatures;
+import Assignatures.ErrorAssigNoExistent;
 import Assignatures.Obligatories;
 import Assignatures.Optatives;
 import Assignatures.Perfil;
@@ -17,6 +18,7 @@ import static Cursos.Enum_Especialitats.INFORMÀTICA;
 import static Cursos.Enum_Especialitats.MECÀNICA;
 import Cursos.FP;
 import Cursos.ll_cursos;
+import Estudiants.Estudiants;
 import Estudiants.ll_estudiants;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -214,6 +216,23 @@ public class Practica_1Algorismia {
     
     private static void mat_estudiants(){
         
+        
+        try{
+            llista_estudiants = new ll_estudiants();
+            String nom_estudiant = entrada_String("Nom de l'estudiant: ");
+            int DNI = entrada_Int("DNI de l'estudiant: ");
+            String nom_assig = entrada_String("Nom assignatura: ");
+            Estudiants est = new Estudiants(nom_estudiant,DNI);
+            
+            llista_estudiants.insertar_element(0, est);
+        
+            llista_cursos.insertar_est(est,llista_assignatures.getAssig(nom_assig));
+        }catch(ErrorAssigNoExistent exc){
+            System.out.println("Error: "+exc.getMessage());
+        }catch(ErrorElementExistent exc2){
+            System.out.println("Error: "+exc2.getMessage());
+        }
+              
     }
     
     private static void est_assig_Curs(){

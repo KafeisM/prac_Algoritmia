@@ -1,8 +1,11 @@
 
 package Cursos;
 
+import Assignatures.Assignatures;
+import Estudiants.Estudiants;
 import java.util.ArrayList;
 import practica_1.algorismia.Element;
+import practica_1.algorismia.ErrorElementExistent;
 import practica_1.algorismia.Interficie_llistes;
 
 /**
@@ -40,6 +43,12 @@ public class ll_cursos implements Interficie_llistes {
     @Override
     public void insertar_element(int i, Element el) {
         llista_cursos.add(i, (Cursos) el);
+    }
+    
+    public void insertar_est(Estudiants est, Assignatures assig) throws ErrorElementExistent{
+        for (int i=0; i<llista_cursos.size(); i++){
+            llista_cursos.get(i).insertar_estudiant(est,assig);
+        }
     }
 
     @Override

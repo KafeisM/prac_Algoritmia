@@ -18,8 +18,8 @@ public class Estudiants extends Element{
         seg = null;
     }
     
-    public void to_String(){
-        super.obtenir_nom();
+    public String to_String(){
+        return super.obtenir_nom();
     }
     
     public void setSeg(Estudiants est){

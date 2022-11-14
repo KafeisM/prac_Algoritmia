@@ -38,7 +38,15 @@ public class ll_estudiants implements Interficie_llistes {
 
     @Override
     public void insertar_element(int i, Element el) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Estudiants input = (Estudiants) el;
+        Estudiants aux = capçalera_estudiant;
+        input.setSeg(capçalera_estudiant);
+        capçalera_estudiant = input;
+
+        while((input.getSeg() != null) && (input.to_String().compareTo(input.getSeg().to_String()) < 0)){
+            capçalera_estudiant = aux;
+            input.setSeg(input.getSeg().getSeg());
+        }  
     }
 
     

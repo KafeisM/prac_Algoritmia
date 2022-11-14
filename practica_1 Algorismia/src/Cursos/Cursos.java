@@ -3,7 +3,9 @@ package Cursos;
 
 import Assignatures.Assignatures;
 import Assignatures.Obligatories;
+import Estudiants.Estudiants;
 import practica_1.algorismia.Element;
+import practica_1.algorismia.ErrorElementExistent;
 
 /**
  *
@@ -28,6 +30,10 @@ public class Cursos extends Element {
        }else{
            ll_assigOp.insertar_element(i, a);
        }   
+    }
+       
+    public void insertar_estudiant(Estudiants est, Assignatures assig) throws ErrorElementExistent{
+        ll_assigOb.insertar_est_assig(est,assig);
     }
     
     public ll_assignatures_ob_curs getassigOb(){

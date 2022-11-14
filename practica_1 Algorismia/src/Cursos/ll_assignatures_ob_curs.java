@@ -1,9 +1,12 @@
 
 package Cursos;
 
+import Assignatures.Assignatures;
 import Assignatures.Obligatories;
+import Estudiants.Estudiants;
 import java.util.ArrayList;
 import practica_1.algorismia.Element;
+import practica_1.algorismia.ErrorElementExistent;
 import practica_1.algorismia.Interficie_llistes;
 
 /**
@@ -46,6 +49,14 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
     @Override
     public void insertar_element(int i, Element el) {
         llista.add(i, (Obligatories) el);
+    }
+    
+    public void insertar_est_assig(Estudiants est, Assignatures assig) throws ErrorElementExistent{
+        for (int i=0; i<llista.size() ;i++){
+            if(llista.get(i).to_String() == assig.to_String()){
+                llista.get(i).insertar_est(est);
+            }
+        }
     }
 
   

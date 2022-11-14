@@ -1,6 +1,9 @@
 
 package Assignatures;
 
+import Estudiants.Estudiants;
+import practica_1.algorismia.ErrorElementExistent;
+
 /**
  *
  * @author Jordi
@@ -22,6 +25,10 @@ public class Optatives extends Assignatures{
     
     public String ll_toString(){
         return llista_est.ll_toString();
+    }
+    
+    public void insertar_est(Estudiants est) throws ErrorElementExistent{
+        llista_est.insertar_element(0, est);
     }
     
 }

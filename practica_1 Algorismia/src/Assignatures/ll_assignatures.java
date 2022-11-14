@@ -29,6 +29,18 @@ public class ll_assignatures implements Interficie_llistes{
     public int get_tamany() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    public Assignatures getAssig(String nom) throws ErrorAssigNoExistent{
+        Assignatures aux = capçalera_assig;
+        while((aux.getSeg() != null) && (aux.to_String()!= nom)){
+            aux.setSeg(aux.getSeg().getSeg());
+        }
+        if(aux.getSeg() == null){
+            throw new ErrorAssigNoExistent("No existeix l'assignatura");
+        }else{
+            return aux;
+        }
+    }
 
     @Override
     public void insertar_element(int i, Element el) {
