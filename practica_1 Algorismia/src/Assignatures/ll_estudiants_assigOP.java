@@ -50,11 +50,10 @@ public class ll_estudiants_assigOP implements Interficie_llistes {
         input.setSeg(capçalera_est);
         capçalera_est = input;
 
-        while((aux.getSeg() != null) && (aux.to_String().compareTo(aux.getSeg().to_String()) < 0)){
-            if(aux.to_String().compareTo(aux.getSeg().to_String()) != 0){
-                aux.setSeg(aux.getSeg().getSeg());
-                capçalera_est = aux;
+        while((input.getSeg() != null) && (input.to_String().compareTo(input.getSeg().to_String()) < 0)){
+            if(input.to_String().compareTo(input.getSeg().to_String()) != 0){
                 input.setSeg(input.getSeg().getSeg());
+                capçalera_est = aux;
             }else{
                 throw new ErrorElementExistent("L'estudiant ja existeix");
             }

@@ -1,4 +1,5 @@
 
+
 package Cursos;
 
 import Assignatures.Assignatures;
@@ -34,6 +35,7 @@ public class Cursos extends Element {
        
     public void insertar_estudiant(Estudiants est, Assignatures assig) throws ErrorElementExistent{
         ll_assigOb.insertar_est_assig(est,assig);
+        ll_assigOp.insertar_est_assig(est,assig);
     }
     
     public ll_assignatures_ob_curs getassigOb(){

@@ -48,9 +48,14 @@ public class ll_assignatures_op_curs implements Interficie_llistes {
     }
 
     public void insertar_est_assig(Estudiants est, Assignatures assig) throws ErrorElementExistent{
-        for (int i=0; i<llista.size() ;i++){
-            if(llista.get(i).to_String() == assig.to_String()){
-                llista.get(i).insertar_est(est);
+        if (llista.isEmpty()){
+            llista.get(0).insertar_est(est);
+        }else{
+            for (int i=0; i<llista.size() ;i++){
+                if(llista.get(i).to_String().compareTo(assig.to_String()) == 0){
+                    llista.get(i).insertar_est(est);
+                    //System.out.println(llista.get(i).ll_toString());
+                }
             }
         }
     }

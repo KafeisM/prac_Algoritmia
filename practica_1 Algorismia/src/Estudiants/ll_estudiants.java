@@ -20,7 +20,7 @@ public class ll_estudiants implements Interficie_llistes {
         Estudiants aux = new Estudiants("zzz",0);
         aux.setSeg(capçalera_estudiant);
         while (aux.getSeg()!=null){
-            res += "| [" + aux.getSeg().toString() + "] ";
+            res += "| [" + aux.getSeg().to_String() + "] ";
             aux.setSeg(aux.getSeg().getSeg());
         }
         return res;
