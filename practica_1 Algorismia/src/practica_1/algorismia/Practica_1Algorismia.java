@@ -54,11 +54,12 @@ public class Practica_1Algorismia {
                 + "Opcio: ";
         
         int opcio = entrada_Int(menu);
+        llista_cursos = new ll_cursos();
+        llista_assignatures = new ll_assignatures();
+        llista_estudiants = new ll_estudiants();
         while (!sortir){
             switch(opcio){
                 case 1:
-                    llista_cursos = new ll_cursos();
-                    llista_assignatures = new ll_assignatures();
                     altaCurs();
                     System.out.println("Llista temporal de cursos:\n " + llista_cursos.ll_toString());
                     System.out.println("Llista temporal de assignatures:\n"  + llista_assignatures.ll_toString());
@@ -130,7 +131,6 @@ public class Practica_1Algorismia {
                 introduir_Obligatories(curs_FP);
                 introduir_Optatives(curs_FP);
                 llista_cursos.insertar_element(i, curs_FP);
-                
                 
                 System.out.println("*********************");
                 

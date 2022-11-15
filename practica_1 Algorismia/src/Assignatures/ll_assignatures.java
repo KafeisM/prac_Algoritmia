@@ -45,7 +45,7 @@ public class ll_assignatures implements Interficie_llistes{
     
     public Assignatures getAssig(String nom) throws ErrorAssigNoExistent{
         Assignatures aux = capçalera_assig;
-        while((aux.getSeg() != null) && (aux.to_String()!= nom)){
+        while((aux.getSeg() != null) && (aux.to_String().compareTo(nom) != 0)){
             //System.out.println(aux.to_String());
             //System.out.println(aux.getSeg().to_String());
             aux = aux.getSeg();
