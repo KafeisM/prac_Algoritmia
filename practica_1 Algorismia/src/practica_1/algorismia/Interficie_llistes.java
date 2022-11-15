@@ -1,5 +1,6 @@
 package practica_1.algorismia;
 
+import Excepcions.ErrorElementExistent;
 import Cursos.Cursos;
 
 /**

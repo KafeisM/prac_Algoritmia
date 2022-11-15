@@ -6,7 +6,7 @@ import Assignatures.Optatives;
 import Estudiants.Estudiants;
 import java.util.ArrayList;
 import practica_1.algorismia.Element;
-import practica_1.algorismia.ErrorElementExistent;
+import Excepcions.ErrorElementExistent;
 import practica_1.algorismia.Interficie_llistes;
 
 /**

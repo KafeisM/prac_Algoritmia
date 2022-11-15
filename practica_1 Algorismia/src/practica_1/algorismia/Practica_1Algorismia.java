@@ -1,6 +1,7 @@
 package practica_1.algorismia;
+import Excepcions.ErrorElementExistent;
 import Assignatures.Assignatures;
-import Assignatures.ErrorAssigNoExistent;
+import Excepcions.ErrorAssigNoExistent;
 import Assignatures.Obligatories;
 import Assignatures.Optatives;
 import Assignatures.Perfil;
@@ -192,7 +193,7 @@ public class Practica_1Algorismia {
             
             Obligatories ass_Ob = new Obligatories(nom, codi, credits);
             
-            c.afegir_ass(ass_Ob, j);
+            c.afegir_ass(ass_Ob, j); //afegir a la llista de obligatories del curs
             llista_assignatures.insertar_element(j, ass_Ob);
             
         }
@@ -221,7 +222,7 @@ public class Practica_1Algorismia {
                     break;
             }
             Optatives ass_Op = new Optatives(nom, codi, per);
-            c.afegir_ass(ass_Op, j);
+            c.afegir_ass(ass_Op, j); //afegir a la llista de optatives del curs
             
             llista_assignatures.insertar_element(j, ass_Op);
 
@@ -252,22 +253,26 @@ public class Practica_1Algorismia {
     
     private static void est_assig_Curs(){
 
-        String nom_curs = entrada_String("Nom del curs: ");
-        Cursos curs = llista_cursos.getCurs(nom_curs);
-        System.out.println("Nom curs: " + curs.obtenir_nom());
-        if (curs.getassigOb().get_tamany() == 0){
-            System.out.println("No hi ha assig. OB");
-        }
-        for (int i=0; i<curs.getassigOb().get_tamany(); i++){
-            System.out.println("Assignatura Ob " + i + ": " + curs.getassigOb().getAssig(i).to_String());
-            System.out.println(curs.getassigOb().getAssig(i).ll_toString());
-        }
-        if (curs.getassigOp().get_tamany() == 0){
-            System.out.println("No hi ha assig. OP");
-        }
-        for (int i=0; i<curs.getassigOp().get_tamany(); i++){
-            System.out.println("Assignatura Op " + i + ": " + curs.getassigOp().getAssig(i).to_String());
-            System.out.println(curs.getassigOp().getAssig(i).ll_toString());
+        try {
+            String nom_curs = entrada_String("Nom del curs: ");
+            Cursos curs = llista_cursos.getCurs(nom_curs);
+            System.out.println("Nom curs: " + curs.obtenir_nom());
+            if (curs.getassigOb().get_tamany() == 0){
+                System.out.println("No hi ha assig. OB");
+            }
+            for (int i=0; i<curs.getassigOb().get_tamany(); i++){
+                System.out.println("Assignatura Ob " + i + ": " + curs.getassigOb().getAssig(i).to_String());
+                System.out.println(curs.getassigOb().getAssig(i).ll_toString());
+            }
+            if (curs.getassigOp().get_tamany() == 0){
+                System.out.println("No hi ha assig. OP");
+            }
+            for (int i=0; i<curs.getassigOp().get_tamany(); i++){
+                System.out.println("Assignatura Op " + i + ": " + curs.getassigOp().getAssig(i).to_String());
+                System.out.println(curs.getassigOp().getAssig(i).ll_toString());
+            }
+        } catch (ErrorElementExistent ex) {
+            System.out.println(ex.getMessage());    //error curs no existent
         }
         
     } 

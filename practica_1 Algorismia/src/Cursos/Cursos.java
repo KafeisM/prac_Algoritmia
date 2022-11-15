@@ -6,7 +6,7 @@ import Assignatures.Assignatures;
 import Assignatures.Obligatories;
 import Estudiants.Estudiants;
 import practica_1.algorismia.Element;
-import practica_1.algorismia.ErrorElementExistent;
+import Excepcions.ErrorElementExistent;
 
 /**
  *

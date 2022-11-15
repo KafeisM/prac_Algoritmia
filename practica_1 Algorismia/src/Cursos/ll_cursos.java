@@ -5,7 +5,9 @@ import Assignatures.Assignatures;
 import Estudiants.Estudiants;
 import java.util.ArrayList;
 import practica_1.algorismia.Element;
-import practica_1.algorismia.ErrorElementExistent;
+import Excepcions.ErrorElementExistent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import practica_1.algorismia.Interficie_llistes;
 
 /**
@@ -25,16 +27,26 @@ public class ll_cursos implements Interficie_llistes {
         return llista_cursos.size();
     }
     
-    public Cursos getCurs(String nom){
+    public Cursos getCurs(String nom) throws ErrorElementExistent{
         int i;
         boolean trobat = false;
         System.out.println("entrada: " + nom);
+        
+        if(llista_cursos.isEmpty()){
+            System.out.println("LLISTA BUIDA");
+        }
+        
         for (i = 0; i < llista_cursos.size() & !trobat; i++) {
             if(llista_cursos.get(i).to_String().equals(nom)){
                 trobat = true;
             }
         }
         System.out.println(i);
+        
+        if(trobat == false){
+            throw new ErrorElementExistent("ERROR: CURS NO EXISTENT");
+            
+        }
         return llista_cursos.get(i-1);
     }
     
@@ -61,9 +73,13 @@ public class ll_cursos implements Interficie_llistes {
 
     @Override
     public void eliminar_element(String nom) {
-        Cursos aux = getCurs(nom);
-        System.out.println("debug: " + aux.to_String());
-        llista_cursos.remove(aux);
+        try {
+            Cursos aux = getCurs(nom);
+            System.out.println("debug: " + aux.to_String());
+            llista_cursos.remove(aux);
+        } catch (ErrorElementExistent ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
    
