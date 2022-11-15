@@ -244,8 +244,6 @@ public class Practica_1Algorismia {
         
             llista_cursos.insertar_est(est,llista_assignatures.getAssig(nom_assig));
             System.out.println("Llista est: " + llista_estudiants.ll_toString());
-        }catch(ErrorAssigNoExistent exc){
-            System.out.println("Error: "+exc.getMessage());
         }catch(ErrorElementExistent exc2){
             System.out.println("Error: "+exc2.getMessage());
         }
