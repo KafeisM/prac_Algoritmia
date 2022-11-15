@@ -28,8 +28,9 @@ public class ll_cursos implements Interficie_llistes {
     public Cursos getCurs(String nom){
         int i;
         boolean trobat = false;
+        System.out.println("entrada: " + nom);
         for (i = 0; i < llista_cursos.size() & !trobat; i++) {
-            if(llista_cursos.get(i).equals(nom)){
+            if(llista_cursos.get(i).to_String().equals(nom)){
                 trobat = true;
             }
         }

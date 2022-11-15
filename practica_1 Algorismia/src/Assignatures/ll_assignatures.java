@@ -1,5 +1,7 @@
 package Assignatures;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import practica_1.algorismia.Element;
 import practica_1.algorismia.Interficie_llistes;
 
@@ -43,18 +45,23 @@ public class ll_assignatures implements Interficie_llistes{
         return tam;
     }
     
-    public Assignatures getAssig(String nom) throws ErrorAssigNoExistent{
-        Assignatures aux = capçalera_assig;
-        while((aux.getSeg() != null) && (aux.to_String().compareTo(nom) != 0)){
-            //System.out.println(aux.to_String());
-            //System.out.println(aux.getSeg().to_String());
-            aux = aux.getSeg();
+    public Assignatures getAssig(String nom){
+        boolean trobat = false;
+        
+        Assignatures aux = new Assignatures("s",0);
+        aux.setSeg(capçalera_assig);
+        
+        System.out.println("entrada: " + nom);
+        while(aux.getSeg() != null & !trobat){
+            if(aux.getSeg().to_String().equals(nom)){
+                trobat = true;
+                break;
+            }else{
+                aux.setSeg(aux.getSeg().getSeg());
+            }
         }
-        if((aux.getSeg() == null) && (aux.to_String().compareTo(nom) != 0)){
-            throw new ErrorAssigNoExistent("No existeix l'assignatura");
-        }else{
-            return aux;
-        }
+        
+        return aux.getSeg();
     }
 
     @Override
@@ -82,7 +89,25 @@ public class ll_assignatures implements Interficie_llistes{
 
     @Override
     public void eliminar_element(String nom) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //eliminar primer node 
+        if (capçalera_assig.to_String().equals(nom)) {
+            capçalera_assig = capçalera_assig.getSeg();
+        } else {
+            Assignatures node_actual = new Assignatures("aux", 0);
+            Assignatures node_anterior = new Assignatures("aux", 1);
+
+            node_actual.setSeg(capçalera_assig);
+            node_anterior.setSeg(null);
+
+            while (node_actual.getSeg() != null) {
+                if (node_actual.getSeg().to_String().equals(nom)) {
+                    node_anterior.getSeg().setSeg(node_actual.getSeg().getSeg());
+                }
+                node_anterior.setSeg(node_actual.getSeg());
+                node_actual.setSeg(node_actual.getSeg().getSeg());
+            }
+        }
+
     }
-    
+
 }

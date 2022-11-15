@@ -72,11 +72,13 @@ public class Practica_1Algorismia {
                     break;
                 case 3:
                     baixacurs();
-                    System.out.println("Llista temporal de cursos:\n " + llista_cursos.ll_toString());
+                    System.out.println("Llista temporal de cursos actuals:\n " + llista_cursos.ll_toString());
                     opcio = entrada_Int(menu);
                     break;
                 case 4:
-                    
+                    baixaAssig();
+                    System.out.println("Llista temporal de assignatures actuals:\n " + llista_assignatures.ll_toString());
+                    opcio = entrada_Int(menu);
                     break;
                 case 5:
                     est_assig_Curs();
@@ -95,6 +97,8 @@ public class Practica_1Algorismia {
             }
         }
     }
+    
+    
     
     private static void altaCurs(){
         int num_curs = entrada_Int("Quants de cursos vols introduir? ");
@@ -167,6 +171,11 @@ public class Practica_1Algorismia {
     private static void baixacurs(){
         String nom_curs = entrada_String("Nom del curs: ");
         llista_cursos.eliminar_element(nom_curs);
+    }
+    
+    private static void baixaAssig(){
+        String nom_assig = entrada_String("Nom de la assignatura: ");
+        llista_assignatures.eliminar_element(nom_assig);
     }
     
     
@@ -269,6 +278,10 @@ public class Practica_1Algorismia {
         String nom_assig = entrada_String("Nom de l'assignatura: ");
         Assignatures assig;
     }
+    
+    
+    
+    //METODES PER ENTRADA DADES
     
     private static String entrada_String(String entrada){
         String sortida = null;
