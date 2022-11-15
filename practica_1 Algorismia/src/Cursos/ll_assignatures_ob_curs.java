@@ -25,11 +25,6 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
     public Obligatories getAssig(int pos){
         return llista.get(pos);
     }
-    
-    @Override
-    public void eliminar_Llista() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public String ll_toString() {
@@ -57,6 +52,11 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
                 llista.get(i).insertar_est(est);
             }
         }
+    }
+
+    @Override
+    public void eliminar_element(String nom) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
   

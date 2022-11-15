@@ -16,18 +16,31 @@ public class ll_assignatures implements Interficie_llistes{
     }
 
     @Override
-    public void eliminar_Llista() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public String ll_toString() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String llista = "";
+        Assignatures aux = new Assignatures("s",0);
+        aux.setSeg(capçalera_assig);
+        
+        while(aux.getSeg() != null){
+            llista += (aux.getSeg()).to_String() + " codi: " + (aux.getSeg()).getCodi() + "\t" ;
+            aux.setSeg(aux.getSeg().getSeg());
+        }
+        
+        return llista;
     }
 
     @Override
     public int get_tamany() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int tam = 0;
+        Assignatures aux = new Assignatures("s",0);
+        aux.setSeg(capçalera_assig);
+        
+        while(aux.getSeg() != null){
+            tam++;
+            aux.setSeg(aux.getSeg().getSeg());
+        }
+        
+        return tam;
     }
     
     public Assignatures getAssig(String nom) throws ErrorAssigNoExistent{
@@ -44,16 +57,30 @@ public class ll_assignatures implements Interficie_llistes{
 
     @Override
     public void insertar_element(int i, Element el) {
-        Assignatures input = (Assignatures) el;
-        Assignatures aux = capçalera_assig;
-        input.setSeg(capçalera_assig);
-        capçalera_assig = input;
+        Assignatures aux  = (Assignatures) el;
+        aux.setSeg(capçalera_assig);
+        capçalera_assig = aux;
+        
+    }
 
-        while((input.getSeg() != null) && (aux.to_String().compareTo(aux.getSeg().to_String()) < 0)){
+    private void ordenar(){
+ 
+        Assignatures aux = new Assignatures("s",0);
+        aux.setSeg(capçalera_assig);
+        
+        while(aux.getSeg() != null){
+            if(aux.getCodi() > aux.getSeg().getCodi()){
+                aux.getSeg().setSeg(aux.getSeg().getSeg());
+                aux.getSeg().getSeg().setSeg(aux);
+                capçalera_assig = aux.getSeg().getSeg();
+            }
             aux.setSeg(aux.getSeg().getSeg());
-            capçalera_assig = aux;
-            input.setSeg(input.getSeg().getSeg());
-        }  
+        }
+    }
+
+    @Override
+    public void eliminar_element(String nom) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

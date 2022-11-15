@@ -21,22 +21,20 @@ public class ll_cursos implements Interficie_llistes {
     }
 
     @Override
-    public void eliminar_Llista() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public int get_tamany() {
         return llista_cursos.size();
     }
     
     public Cursos getCurs(String nom){
-        int cont = 0;
-        while ((cont < llista_cursos.size())&&(llista_cursos.get(cont).to_String() != nom)){
-            //System.out.println(llista_cursos.get(cont).to_String());
-            cont++;
+        int i;
+        boolean trobat = false;
+        for (i = 0; i < llista_cursos.size() & !trobat; i++) {
+            if(llista_cursos.get(i).equals(nom)){
+                trobat = true;
+            }
         }
-        return llista_cursos.get(cont-1);
+        System.out.println(i);
+        return llista_cursos.get(i-1);
     }
     
 
@@ -58,6 +56,13 @@ public class ll_cursos implements Interficie_llistes {
             res += "[" + llista_cursos.get(i).to_String() + "]\n";
         }
         return res;
+    }
+
+    @Override
+    public void eliminar_element(String nom) {
+        Cursos aux = getCurs(nom);
+        System.out.println("debug: " + aux.to_String());
+        llista_cursos.remove(aux);
     }
 
    

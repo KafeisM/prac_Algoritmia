@@ -58,8 +58,10 @@ public class Practica_1Algorismia {
             switch(opcio){
                 case 1:
                     llista_cursos = new ll_cursos();
+                    llista_assignatures = new ll_assignatures();
                     altaCurs();
-                    System.out.println("Llista temporal:\n " + llista_cursos.ll_toString());
+                    System.out.println("Llista temporal de cursos:\n " + llista_cursos.ll_toString());
+                    System.out.println("Llista temporal de assignatures:\n"  + llista_assignatures.ll_toString());
                     opcio = entrada_Int(menu);
                     break;
                 case 2:
@@ -68,7 +70,9 @@ public class Practica_1Algorismia {
                     opcio = entrada_Int(menu);
                     break;
                 case 3:
-                    
+                    baixacurs();
+                    System.out.println("Llista temporal de cursos:\n " + llista_cursos.ll_toString());
+                    opcio = entrada_Int(menu);
                     break;
                 case 4:
                     
@@ -160,12 +164,15 @@ public class Practica_1Algorismia {
         
     }
     
+    private static void baixacurs(){
+        String nom_curs = entrada_String("Nom del curs: ");
+        llista_cursos.eliminar_element(nom_curs);
+    }
+    
     
     private static void introduir_Obligatories(Cursos c) {
         int num_assig, codi, credits;
         String nom;
-        
-        llista_assignatures = new ll_assignatures();
 
         num_assig = entrada_Int("Quantes assignatures obligatories vols introduir? ");
 
@@ -173,23 +180,21 @@ public class Practica_1Algorismia {
             nom = entrada_String("Introdueix el nom de la assignatura:");
             codi = entrada_Int("Introdueix el codi de la assignatura:");
             credits = entrada_Int("Introdueix els credits de la assignatura:");
-            Obligatories ass_Ob = new Obligatories(nom, codi, credits);
-            c.afegir_ass(ass_Ob, j);
             
+            Obligatories ass_Ob = new Obligatories(nom, codi, credits);
+            
+            c.afegir_ass(ass_Ob, j);
             llista_assignatures.insertar_element(j, ass_Ob);
             
         }
 
-        System.out.println("**************");
+        System.out.println("*********************");
     }
 
     private static void introduir_Optatives(Cursos c) {
         int num_assig, codi;
         String nom;
         Perfil per = null;
-        
-        llista_assignatures = new ll_assignatures();
-
 
         num_assig = entrada_Int("Quantes assignatures optatives vols introduir? ");
 
@@ -197,8 +202,8 @@ public class Practica_1Algorismia {
             nom = entrada_String("Introdueix el nom de la assignatura:");
             codi = entrada_Int("Introdueix el codi de la assignatura:");
             switch (entrada_Int("Tria quin perfil es: \n"
-                    + "1. Primer\n"
-                    + "2. Segon")) {
+                    + "1. TEÒRIC\n"
+                    + "2. PRÀCTIC")) {
                 case 1:
                     per = TEÒRIC;
                     break;
@@ -212,7 +217,7 @@ public class Practica_1Algorismia {
             llista_assignatures.insertar_element(j, ass_Op);
 
         }
-        System.out.println("**************");
+        System.out.println("*********************");
 
     }
     

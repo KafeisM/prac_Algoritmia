@@ -15,11 +15,6 @@ public class ll_estudiants implements Interficie_llistes {
     }
 
     @Override
-    public void eliminar_Llista() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public String ll_toString() {
         String res = "";
         Estudiants aux = new Estudiants("zzz",0);
@@ -47,6 +42,11 @@ public class ll_estudiants implements Interficie_llistes {
             capçalera_estudiant = aux;
             input.setSeg(input.getSeg().getSeg());
         }  
+    }
+
+    @Override
+    public void eliminar_element(String nom) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

@@ -17,6 +17,10 @@ public class Assignatures extends Element{
         seg = null;
     }
     
+    public int getCodi(){
+        return codi_assignatura;
+    }
+    
     public void setSeg(Assignatures assig){
         this.seg = assig;
     }

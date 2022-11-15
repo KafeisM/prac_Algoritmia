@@ -18,11 +18,6 @@ public class ll_estudiants_assigOP implements Interficie_llistes {
     public ll_estudiants_assigOP(){
         capçalera_est = null;
     }
-    
-    @Override
-    public void eliminar_Llista() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public String ll_toString() {
@@ -64,6 +59,11 @@ public class ll_estudiants_assigOP implements Interficie_llistes {
                 throw new ErrorElementExistent("L'estudiant ja existeix");
             }
         } 
+    }
+
+    @Override
+    public void eliminar_element(String nom) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 
