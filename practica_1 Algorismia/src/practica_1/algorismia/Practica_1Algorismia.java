@@ -247,6 +247,7 @@ public class Practica_1Algorismia {
 
         String nom_curs = entrada_String("Nom del curs: ");
         Cursos curs = llista_cursos.getCurs(nom_curs);
+        System.out.println("Nom curs: " + curs.obtenir_nom());
         if (curs.getassigOb().get_tamany() == 0){
             System.out.println("No hi ha assig. OB");
         }
