@@ -1,7 +1,5 @@
 package Assignatures;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import practica_1.algorismia.Element;
 import practica_1.algorismia.Interficie_llistes;
 
