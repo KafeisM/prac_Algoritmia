@@ -25,6 +25,45 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
     public Obligatories getAssig(int pos){
         return llista.get(pos);
     }
+    
+    public Obligatories getAssig(String nom_assig){
+        boolean trobat = false;
+        int i;
+        for (i=0; (i<llista.size()) && (!trobat);i++){
+            if (llista.get(i).to_String().compareTo(nom_assig) == 0){
+                trobat = true;
+            }
+        }
+        return llista.get(i-1);
+    }
+    
+    public boolean cercaAssig(String nom_assig){
+        boolean trobat = false;
+        int i;
+        for (i = 0;(i < llista.size()) && (!trobat); i++){
+            if(llista.get(i).to_String().compareTo(nom_assig) == 0){
+                trobat = true;
+            }
+        }
+        return trobat;
+    }
+    
+    public Assignatures getAssig_est(int dni){
+        int i;
+        boolean trobat = false;
+        for (i = 0;(i < llista.size()) && (!trobat); i++){
+            //System.out.println("entro");
+            if (llista.get(i).getll_Estudiants().cerca_est(dni)){
+                trobat = true;
+            }
+        }
+        if (trobat){
+            //System.out.println("ll_ass_ob: " + llista.get(i-1));
+            return llista.get(i-1);
+        }else{
+            return new Assignatures("",0);
+        }
+    }
 
     @Override
     public String ll_toString() {
@@ -52,10 +91,11 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
             llista.get(0).insertar_est(est);
         }else{
             for (int i=0; i<llista.size() ;i++){
-                //System.out.println("ass.ob.curs: " + assig.to_String() + " " +llista.get(i).to_String());
-                if(llista.get(i).to_String().compareTo(assig.to_String()) == 0){
+                System.out.println(llista.get(i).obtenir_nom());
+                //System.out.println("ass.ob.curs: " + assig.obtenir_nom() + " " +llista.get(i).obtenir_nom());
+                if(llista.get(i).obtenir_nom().compareTo(assig.obtenir_nom()) == 0){
                     llista.get(i).insertar_est(est);
-                    //System.out.println(llista.get(i).to_String());
+                    System.out.println(llista.get(i).to_String());
                 }
             }
         }

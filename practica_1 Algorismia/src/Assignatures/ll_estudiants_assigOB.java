@@ -30,6 +30,20 @@ public class ll_estudiants_assigOB implements Interficie_llistes {
         }
         return res;
     }
+    
+    public boolean cerca_est(int dni){
+        boolean trobat = false;
+        Estudiants aux = new Estudiants("zzz",0);
+        aux.setSeg(capçalera_est);
+        while ((aux.getSeg() != null) && (!trobat)){
+            //System.out.println("ll_est_assigOb: "+dni);
+            if (aux.getSeg().getDNI() == dni){
+                trobat = true;
+            }
+            aux.setSeg(aux.getSeg().getSeg());
+        }
+        return trobat;
+    }
 
     @Override
     public int get_tamany() {

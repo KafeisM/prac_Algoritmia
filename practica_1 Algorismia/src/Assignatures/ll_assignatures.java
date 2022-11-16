@@ -49,7 +49,7 @@ public class ll_assignatures implements Interficie_llistes{
         Assignatures aux = new Assignatures("s",0);
         aux.setSeg(capçalera_assig);
         
-        System.out.println("entrada: " + nom);
+        //System.out.println("entrada: " + nom);
         while(aux.getSeg() != null & !trobat){
             if(aux.getSeg().to_String().equals(nom)){
                 trobat = true;
@@ -58,7 +58,7 @@ public class ll_assignatures implements Interficie_llistes{
                 aux.setSeg(aux.getSeg().getSeg());
             }
         }
-        
+        System.out.println("entrada: " + aux.getSeg().to_String());
         return aux.getSeg();
     }
 

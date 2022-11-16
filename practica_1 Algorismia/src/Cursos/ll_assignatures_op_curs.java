@@ -27,7 +27,33 @@ public class ll_assignatures_op_curs implements Interficie_llistes {
         return llista.get(pos);
     }
     
-
+    public Optatives getAssig(String nom_assig){
+        boolean trobat = false;
+        int i;
+        for (i=0; (i<llista.size()) && (!trobat);i++){
+            if (llista.get(i).to_String().compareTo(nom_assig) == 0){
+                trobat = true;
+            }
+        }
+        return llista.get(i-1);
+    }
+    
+    public Assignatures getAssig_est(int dni){
+        int i;
+        boolean trobat = false;
+        for (i = 0;(i < llista.size()) && (!trobat); i++){
+            if (llista.get(i).getll_Estudiants().cerca_est(dni)){
+                trobat = true;
+            }
+        }
+        if (trobat){
+            //System.out.println("ll_ass_op: " + llista.get(i-1));
+            return llista.get(i-1);
+        }else{
+            return new Assignatures("",0);
+        }
+    }
+    
     @Override
     public String ll_toString() {
         String res = "";
@@ -58,6 +84,17 @@ public class ll_assignatures_op_curs implements Interficie_llistes {
                 }
             }
         }
+    }
+    
+    public boolean cercaAssig(String nom_assig){
+        boolean trobat = false;
+        int i;
+        for (i = 0;(i < llista.size()) && (!trobat); i++){
+            if(llista.get(i).to_String().compareTo(nom_assig) == 0){
+                trobat = true;
+            }
+        }
+        return trobat;
     }
 
     @Override

@@ -91,7 +91,8 @@ public class Practica_1Algorismia {
                     opcio = entrada_Int(menu);
                     break;
                 case 7:
-                    
+                    assigsicurs_est();
+                    opcio = entrada_Int(menu);
                     break;
                 default:
                     sortir = true;
@@ -232,6 +233,8 @@ public class Practica_1Algorismia {
 
     }
     
+    //inserir estudiant a un curs i assignatura
+    //inserir el mateix estudiant a la llista d'estudiants
     private static void mat_estudiants(){
         
         
@@ -239,11 +242,12 @@ public class Practica_1Algorismia {
             String nom_estudiant = entrada_String("Nom de l'estudiant: ");
             int DNI = entrada_Int("DNI de l'estudiant: ");
             String nom_assig = entrada_String("Nom assignatura: ");
-            Estudiants est = new Estudiants(nom_estudiant,DNI);
             
+            Estudiants est = new Estudiants(nom_estudiant,DNI);
             llista_cursos.insertar_est(est,llista_assignatures.getAssig(nom_assig));
             
-            llista_estudiants.insertar_element(0, est);
+            Estudiants est2 = new Estudiants(nom_estudiant,DNI);
+            llista_estudiants.insertar_element(0, est2);
             
         }catch(ErrorElementExistent exc2){
             System.out.println("Error: "+exc2.getMessage());
@@ -260,6 +264,7 @@ public class Practica_1Algorismia {
             if (curs.getassigOb().get_tamany() == 0){
                 System.out.println("No hi ha assig. OB");
             }
+            //System.out.println("5: " + curs.getassigOb().get_tamany());
             for (int i=0; i<curs.getassigOb().get_tamany(); i++){
                 System.out.println("Assignatura Ob " + i + ": " + curs.getassigOb().getAssig(i).to_String());
                 System.out.println(curs.getassigOb().getAssig(i).ll_toString());
@@ -267,6 +272,7 @@ public class Practica_1Algorismia {
             if (curs.getassigOp().get_tamany() == 0){
                 System.out.println("No hi ha assig. OP");
             }
+            //System.out.println("5: " + curs.getassigOb().get_tamany());
             for (int i=0; i<curs.getassigOp().get_tamany(); i++){
                 System.out.println("Assignatura Op " + i + ": " + curs.getassigOp().getAssig(i).to_String());
                 System.out.println(curs.getassigOp().getAssig(i).ll_toString());
@@ -278,11 +284,36 @@ public class Practica_1Algorismia {
     } 
     
     private static void est_curs_assig(){
-        String nom_assig = entrada_String("Nom de l'assignatura: ");
-        Assignatures assig;
+         
+        try{
+            String nom_assig = entrada_String("Nom assignatura: ");
+            Cursos aux = llista_cursos.getCurs_assig(nom_assig);
+            System.out.println("Curs: " + aux.to_String());
+            System.out.println("Llista estudiants: " + aux.getll_est_Assig(nom_assig));
+        }catch(ErrorAssigNoExistent e){
+            System.out.println("Error: " + e.getMessage());
+        }
     }
     
-    
+    private static void assigsicurs_est(){
+        
+        int dni = entrada_Int("DNI de l'estudiant: ");
+        String assigs;
+        int cont = 0;
+        for (int i=0;i < llista_cursos.get_tamany(); i++){
+            //System.out.println("main: |" + llista_cursos.getCurs(i).getAssig_est(dni));
+            if(llista_cursos.getCurs(i).getAssig_est(dni).compareTo("") == 0){
+                cont++;
+            }else{
+                System.out.println("Curs :" + llista_cursos.getCurs(i).to_String());
+                System.out.println(llista_cursos.getCurs(i).getAssig_est(dni));
+            }
+        }
+        if(cont == llista_cursos.get_tamany()){
+            System.out.println("No existeix l'estudiant");
+        }
+        
+    }
     
     //METODES PER ENTRADA DADES
     

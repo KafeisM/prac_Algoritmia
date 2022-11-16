@@ -42,6 +42,20 @@ public class ll_estudiants_assigOP implements Interficie_llistes {
         }
         return res;
     }
+    
+    public boolean cerca_est(int dni){
+        boolean trobat = false;
+        Estudiants aux = new Estudiants("zzz",0);
+        aux.setSeg(capçalera_est);
+        while ((aux.getSeg() != null) && (!trobat)){
+            //System.out.println("ll_est_assigOb: "+dni);
+            if (aux.getSeg().getDNI() == dni){
+                trobat = true;
+            }
+            aux.setSeg(aux.getSeg().getSeg());
+        }
+        return trobat;
+    }
 
     @Override
     public void insertar_element(int i, Element el) throws ErrorElementExistent{

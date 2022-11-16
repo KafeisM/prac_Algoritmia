@@ -19,6 +19,14 @@ public class Optatives extends Assignatures{
         this.llista_est = new ll_estudiants_assigOP();
     }
     
+    public boolean cerca_est(int dni){
+        if (llista_est.cerca_est(dni)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
     public ll_estudiants_assigOP getll_Estudiants(){
         return llista_est;
     }

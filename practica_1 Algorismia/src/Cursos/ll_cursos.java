@@ -3,6 +3,7 @@ package Cursos;
 
 import Assignatures.Assignatures;
 import Estudiants.Estudiants;
+import Excepcions.ErrorAssigNoExistent;
 import java.util.ArrayList;
 import practica_1.algorismia.Element;
 import Excepcions.ErrorElementExistent;
@@ -50,6 +51,9 @@ public class ll_cursos implements Interficie_llistes {
         return llista_cursos.get(i-1);
     }
     
+    public Cursos getCurs(int i){
+        return llista_cursos.get(i);
+    }
 
     @Override
     public void insertar_element(int i, Element el) {
@@ -80,6 +84,21 @@ public class ll_cursos implements Interficie_llistes {
         } catch (ErrorElementExistent ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    public Cursos getCurs_assig(String nom_assig) throws ErrorAssigNoExistent{
+        boolean trobat = false;
+        int i;
+        if (llista_cursos.isEmpty()){
+            System.out.println("LLISTA BUIDA");
+        }
+        for (i=0; (i<llista_cursos.size()) && !trobat; i++){
+            trobat = llista_cursos.get(i).cercaAssig(nom_assig);
+        }
+        if (trobat == false){
+            throw new ErrorAssigNoExistent("Assignatura no existent");
+        }
+        return llista_cursos.get(i-1);
     }
 
    

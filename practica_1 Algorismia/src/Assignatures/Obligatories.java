@@ -22,6 +22,14 @@ public class Obligatories extends Assignatures{
         return llista_est;
     }
     
+    public boolean cerca_est(int dni){
+        if (llista_est.cerca_est(dni)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
     public String ll_toString(){
         return llista_est.ll_toString();
     }
