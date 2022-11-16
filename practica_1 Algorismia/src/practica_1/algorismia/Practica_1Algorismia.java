@@ -1,6 +1,5 @@
 package practica_1.algorismia;
 import Excepcions.ErrorElementExistent;
-import Assignatures.Assignatures;
 import Excepcions.ErrorAssigNoExistent;
 import Assignatures.Obligatories;
 import Assignatures.Optatives;
@@ -21,11 +20,13 @@ import Cursos.FP;
 import Cursos.ll_cursos;
 import Estudiants.Estudiants;
 import Estudiants.ll_estudiants;
+import Vista.Pantalla;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,6 +37,7 @@ public class Practica_1Algorismia {
     static private ll_cursos llista_cursos;
     static private ll_estudiants llista_estudiants;
     static private ll_assignatures llista_assignatures;
+    static private int indexCursos = 0;
     
     public Practica_1Algorismia(){
        /* this.setTitle("GESTOR COL·LEGI");
@@ -61,7 +63,7 @@ public class Practica_1Algorismia {
         while (!sortir){
             switch(opcio){
                 case 1:
-                    altaCurs();
+                    //altaCurs();
                     System.out.println("Llista temporal de cursos:\n " + llista_cursos.ll_toString());
                     System.out.println("Llista temporal de assignatures:\n"  + llista_assignatures.ll_toString());
                     opcio = entrada_Int(menu);
@@ -101,9 +103,31 @@ public class Practica_1Algorismia {
         }
     }
     
+    public static void altaCurs2(String nom, int codi, Enum_Especialitats esp, Enum_Cursos c, boolean esFP){
+
+            if(esFP){
+                //crear curs de FP
+                FP curs_FP = new FP(nom,codi,esp);        
+                introduir_Obligatories(curs_FP);
+                introduir_Optatives(curs_FP);
+                llista_cursos.insertar_element(indexCursos, curs_FP);
+                indexCursos++;
+                
+            }else{
+                //crear curs de batxiller
+                Batxiller curs_batx = new Batxiller(nom,codi,c);   
+                introduir_Obligatories(curs_batx);
+                introduir_Optatives(curs_batx);
+                llista_cursos.insertar_element(indexCursos, curs_batx);
+                indexCursos++;
+            }
+        
+        System.out.println(llista_cursos.ll_toString());
+        
+    }
     
     
-    private static void altaCurs(){
+    public static void altaCurs(){
         int num_curs = entrada_Int("Quants de cursos vols introduir? ");
         int codi;
         String nom;
@@ -185,16 +209,16 @@ public class Practica_1Algorismia {
     private static void introduir_Obligatories(Cursos c) {
         int num_assig, codi, credits;
         String nom;
+        
 
-        num_assig = entrada_Int("Quantes assignatures obligatories vols introduir? ");
+        num_assig = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantes assignatures OBLIGATORIES vols introduir?"));
 
         for (int j = 0; j < num_assig; j++) {
-            nom = entrada_String("Introdueix el nom de la assignatura:");
-            codi = entrada_Int("Introdueix el codi de la assignatura:");
-            credits = entrada_Int("Introdueix els credits de la assignatura:");
+            nom = JOptionPane.showInputDialog(null, "Introdueix el nom de la assignatura");
+            codi = Integer.parseInt(JOptionPane.showInputDialog(null, "Introdueix el codi de la assignatura"));
+            credits = Integer.parseInt(JOptionPane.showInputDialog(null, "Introdueix els crèdits de la assignatura"));
             
             Obligatories ass_Ob = new Obligatories(nom, codi, credits);
-            
             c.afegir_ass(ass_Ob, j); //afegir a la llista de obligatories del curs
             llista_assignatures.insertar_element(j, ass_Ob);
             
@@ -208,11 +232,11 @@ public class Practica_1Algorismia {
         String nom;
         Perfil per = null;
 
-        num_assig = entrada_Int("Quantes assignatures optatives vols introduir? ");
+        num_assig = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantes assignatures OPTATIVES vols introduir?"));
 
         for (int j = 0; j < num_assig; j++) {
-            nom = entrada_String("Introdueix el nom de la assignatura:");
-            codi = entrada_Int("Introdueix el codi de la assignatura:");
+            nom = JOptionPane.showInputDialog(null, "Introdueix el nom de la assignatura");
+            codi = Integer.parseInt(JOptionPane.showInputDialog(null, "Introdueix el codi de la assignatura"));
             switch (entrada_Int("Tria quin perfil es: \n"
                     + "1. TEÒRIC\n"
                     + "2. PRÀCTIC")) {
@@ -306,7 +330,7 @@ public class Practica_1Algorismia {
                 cont++;
             }else{
                 System.out.println("Curs :" + llista_cursos.getCurs(i).to_String());
-                System.out.println(llista_cursos.getCurs(i).getAssig_est(dni));
+                System.out.println(llista_cursos.getCurs(i).getAssig_est(dni) + "|");
             }
         }
         if(cont == llista_cursos.get_tamany()){
@@ -343,8 +367,11 @@ public class Practica_1Algorismia {
     }
     
     public static void main(String[] args) {
-        Practica_1Algorismia et = new Practica_1Algorismia();
-        //et.setVisible(true);
+        Pantalla pant = new Pantalla();
+        pant.setVisible(true);
+        llista_cursos = new ll_cursos();
+        llista_assignatures = new ll_assignatures();
+        llista_estudiants = new ll_estudiants();
     }
 
 
