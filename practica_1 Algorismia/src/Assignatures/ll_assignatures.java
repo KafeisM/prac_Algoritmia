@@ -66,8 +66,7 @@ public class ll_assignatures implements Interficie_llistes{
     public void insertar_element(int i, Element el) {
         Assignatures aux  = (Assignatures) el;
         aux.setSeg(capçalera_assig);
-        capçalera_assig = aux;
-        
+        capçalera_assig = aux;        
     }
 
     private void ordenar(){

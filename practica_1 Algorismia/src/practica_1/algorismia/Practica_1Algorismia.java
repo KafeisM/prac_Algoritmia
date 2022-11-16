@@ -67,8 +67,9 @@ public class Practica_1Algorismia {
                     opcio = entrada_Int(menu);
                     break;
                 case 2:
-                    llista_estudiants = new ll_estudiants();
+                    System.out.println("Abans Llista estudiants:\n " + llista_estudiants.ll_toString());
                     mat_estudiants();
+                    System.out.println("Llista estudiants:\n " + llista_estudiants.ll_toString());
                     opcio = entrada_Int(menu);
                     break;
                 case 3:
@@ -235,16 +236,15 @@ public class Practica_1Algorismia {
         
         
         try{
-            llista_estudiants = new ll_estudiants();
             String nom_estudiant = entrada_String("Nom de l'estudiant: ");
             int DNI = entrada_Int("DNI de l'estudiant: ");
             String nom_assig = entrada_String("Nom assignatura: ");
             Estudiants est = new Estudiants(nom_estudiant,DNI);
             
-            llista_estudiants.insertar_element(0, est);
-        
             llista_cursos.insertar_est(est,llista_assignatures.getAssig(nom_assig));
-            System.out.println("Llista est: " + llista_estudiants.ll_toString());
+            
+            llista_estudiants.insertar_element(0, est);
+            
         }catch(ErrorElementExistent exc2){
             System.out.println("Error: "+exc2.getMessage());
         }

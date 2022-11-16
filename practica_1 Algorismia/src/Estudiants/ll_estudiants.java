@@ -16,14 +16,17 @@ public class ll_estudiants implements Interficie_llistes {
 
     @Override
     public String ll_toString() {
-        String res = "";
-        Estudiants aux = new Estudiants("zzz",0);
+        String llista = "";
+        Estudiants aux = new Estudiants("s",0);
         aux.setSeg(capçalera_estudiant);
-        while (aux.getSeg()!=null){
-            res += "| [" + aux.getSeg().to_String() + "] ";
+        
+        while(aux.getSeg() != null){
+            System.out.println(aux.getSeg().to_String());
+            llista += (aux.getSeg()).to_String() + " DNI: " + (aux.getSeg()).getDNI() + "\t" ;
             aux.setSeg(aux.getSeg().getSeg());
         }
-        return res;
+        
+        return llista;
     }
 
     @Override
@@ -33,15 +36,23 @@ public class ll_estudiants implements Interficie_llistes {
 
     @Override
     public void insertar_element(int i, Element el) {
-        Estudiants input = (Estudiants) el;
-        Estudiants aux = capçalera_estudiant;
-        input.setSeg(capçalera_estudiant);
-        capçalera_estudiant = input;
-
-        while((input.getSeg() != null) && (input.to_String().compareTo(input.getSeg().to_String()) < 0)){
-            capçalera_estudiant = aux;
-            input.setSeg(input.getSeg().getSeg());
-        }  
+        Estudiants aux  = (Estudiants) el;
+        aux.setSeg(capçalera_estudiant);
+        capçalera_estudiant = aux;
+    }
+    
+    private void ordenar(){
+        Estudiants aux = new Estudiants("s",0);
+        aux.setSeg(capçalera_estudiant);
+        
+        while(aux.getSeg() != null){
+            if(aux.to_String().compareTo(aux.getSeg().to_String()) > 0){
+                aux.getSeg().setSeg(aux.getSeg().getSeg());
+                aux.getSeg().getSeg().setSeg(aux);
+                capçalera_estudiant = aux.getSeg().getSeg();
+            }
+            aux.setSeg(aux.getSeg().getSeg());
+        }
     }
 
     @Override

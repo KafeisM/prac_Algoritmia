@@ -18,6 +18,10 @@ public class Estudiants extends Element{
         seg = null;
     }
     
+    public int getDNI(){
+        return DNI;
+    }
+    
     public String to_String(){
         return super.obtenir_nom();
     }
