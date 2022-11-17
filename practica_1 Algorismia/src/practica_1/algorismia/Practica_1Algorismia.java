@@ -33,107 +33,47 @@ public class Practica_1Algorismia {
     static private ll_estudiants llista_estudiants;
     static private ll_assignatures llista_assignatures;
     static private int indexCursos = 0;
-    
-    public Practica_1Algorismia(){
-       /* this.setTitle("GESTOR COL·LEGI");
-        this.setSize(1000, 1000);
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
-        this.setDefaultCloseOperation(Practica_1Algorismia.EXIT_ON_CLOSE); */
-        
-        boolean sortir = false;
-        String menu = "1. Alta curs\n"
-                + "2. Matricular estudiant\n"
-                + "3. Baixa curs\n"
-                + "4. Baixa assignatura\n"
-                + "5. Llistar assignatures d'un curs\n"
-                + "6. Curs al que pertany una assignatura\n"
-                + "7. Assignatures d'un estudiant\n"
-                + "Opcio: ";
-        
-        int opcio = entrada_Int(menu);
-        llista_cursos = new ll_cursos();
-        llista_assignatures = new ll_assignatures();
-        llista_estudiants = new ll_estudiants();
-        while (!sortir){
-            switch(opcio){
-                case 1:
-                    //altaCurs();
-                    System.out.println("Llista temporal de cursos:\n " + llista_cursos.ll_toString());
-                    System.out.println("Llista temporal de assignatures:\n"  + llista_assignatures.ll_toString());
-                    opcio = entrada_Int(menu);
-                    break;
-                case 2:
-                    System.out.println("Abans Llista estudiants:\n " + llista_estudiants.ll_toString());
-                    System.out.println("Llista estudiants:\n " + llista_estudiants.ll_toString());
-                    opcio = entrada_Int(menu);
-                    break;
-                case 3:
-                    baixacurs();
-                    System.out.println("Llista temporal de cursos actuals:\n " + llista_cursos.ll_toString());
-                    opcio = entrada_Int(menu);
-                    break;
-                case 4:
-                    baixaAssig();
-                    System.out.println("Llista temporal de assignatures actuals:\n " + llista_assignatures.ll_toString());
-                    opcio = entrada_Int(menu);
-                    break;
-                case 5:
-                    opcio = entrada_Int(menu);
-                    break;
-                case 6:
-                    opcio = entrada_Int(menu);
-                    break;
-                case 7:
-                    //assigsicurs_est();
-                    opcio = entrada_Int(menu);
-                    break;
-                default:
-                    sortir = true;
-                    break;
-            }
+ 
+    public static void altaCurs(String nom, int codi, Enum_Especialitats esp, Enum_Cursos c, boolean esFP) {
+
+        if (esFP) {
+            //crear curs de FP
+            FP curs_FP = new FP(nom, codi, esp);
+            introduir_Obligatories(curs_FP);
+            introduir_Optatives(curs_FP);
+            llista_cursos.insertar_element(indexCursos, curs_FP);
+            indexCursos++;
+
+        } else {
+            //crear curs de batxiller
+            Batxiller curs_batx = new Batxiller(nom, codi, c);
+            introduir_Obligatories(curs_batx);
+            introduir_Optatives(curs_batx);
+            llista_cursos.insertar_element(indexCursos, curs_batx);
+            indexCursos++;
+        }
+
+        System.out.println(llista_cursos.ll_toString());
+
+    }
+
+    public static void baixacurs(String nom_curs) {
+        try {
+            llista_cursos.getCurs(nom_curs).eliminar_Assignatures_Curs(llista_assignatures);
+            llista_cursos.eliminar_element(nom_curs);
+            indexCursos--;
+        } catch (ErrorElementExistent ex) {
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    public static void altaCurs2(String nom, int codi, Enum_Especialitats esp, Enum_Cursos c, boolean esFP){
 
-            if(esFP){
-                //crear curs de FP
-                FP curs_FP = new FP(nom,codi,esp);        
-                introduir_Obligatories(curs_FP);
-                introduir_Optatives(curs_FP);
-                llista_cursos.insertar_element(indexCursos, curs_FP);
-                indexCursos++;
-                
-            }else{
-                //crear curs de batxiller
-                Batxiller curs_batx = new Batxiller(nom,codi,c);   
-                introduir_Obligatories(curs_batx);
-                introduir_Optatives(curs_batx);
-                llista_cursos.insertar_element(indexCursos, curs_batx);
-                indexCursos++;
-            }
-        
-        System.out.println(llista_cursos.ll_toString());
-        
-    }
-    
-   
-    private static void baixacurs(){
-        String nom_curs = entrada_String("Nom del curs: ");
-        llista_cursos.eliminar_element(nom_curs);
-    }
-    
-    private static void baixaAssig(){
-        String nom_assig = entrada_String("Nom de la assignatura: ");
+    public static void baixaAssig(String nom_assig) {
         llista_assignatures.eliminar_element(nom_assig);
     }
-    
-    
+
     private static void introduir_Obligatories(Cursos c) {
         int num_assig, codi, credits;
         String nom;
-        
 
         num_assig = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantes assignatures OBLIGATORIES vols introduir?"));
 
@@ -141,11 +81,11 @@ public class Practica_1Algorismia {
             nom = JOptionPane.showInputDialog(null, "Introdueix el nom de la assignatura");
             codi = Integer.parseInt(JOptionPane.showInputDialog(null, "Introdueix el codi de la assignatura"));
             credits = Integer.parseInt(JOptionPane.showInputDialog(null, "Introdueix els crèdits de la assignatura"));
-            
+
             Obligatories ass_Ob = new Obligatories(nom, codi, credits);
             c.afegir_ass(ass_Ob, j); //afegir a la llista de obligatories del curs
             llista_assignatures.insertar_element(j, ass_Ob);
-            
+
         }
 
         System.out.println("*********************");
@@ -154,7 +94,7 @@ public class Practica_1Algorismia {
     private static void introduir_Optatives(Cursos c) {
         int num_assig, codi;
         String nom;
-        String[] options = {"TEÒRIC","PRÀCTIC"};
+        String[] options = {"TEÒRIC", "PRÀCTIC"};
         Perfil per = null;
 
         num_assig = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantes assignatures OPTATIVES vols introduir?"));
@@ -162,10 +102,10 @@ public class Practica_1Algorismia {
         for (int j = 0; j < num_assig; j++) {
             nom = JOptionPane.showInputDialog(null, "Introdueix el nom de la assignatura");
             codi = Integer.parseInt(JOptionPane.showInputDialog(null, "Introdueix el codi de la assignatura"));
-            
+
             switch (JOptionPane.showOptionDialog(null, "Selecciona el perfil de la assignatura",
-                "Perfil Assignatures",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0])) {
+                    "Perfil Assignatures",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0])) {
                 case 0:
                     per = TEÒRIC;
                     break;
@@ -175,33 +115,37 @@ public class Practica_1Algorismia {
             }
             Optatives ass_Op = new Optatives(nom, codi, per);
             c.afegir_ass(ass_Op, j); //afegir a la llista de optatives del curs
-            
+
             llista_assignatures.insertar_element(j, ass_Op);
 
         }
         System.out.println("*********************");
 
     }
-    
+
     //inserir estudiant a un curs i assignatura
     //inserir el mateix estudiant a la llista d'estudiants
-    public static void mat_estudiants(String nom_estudiant, int DNI, String nom_assig){
-        
-        
-        try{
-            
-            Estudiants est = new Estudiants(nom_estudiant,DNI);
-            llista_cursos.insertar_est(est,llista_assignatures.getAssig(nom_assig));
-            
-            Estudiants est2 = new Estudiants(nom_estudiant,DNI);
-            llista_estudiants.insertar_element(0, est2);
-            
-        }catch(ErrorElementExistent exc2){
+    public static void mat_estudiants(String nom_estudiant, int DNI, String nom_assig) {
+
+        try {
+            if (llista_assignatures.getAssig(nom_assig) == null) {
+                JOptionPane.showMessageDialog(null, "ERROR ASSIGNATURA NO TROBADA", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                Estudiants est = new Estudiants(nom_estudiant, DNI);
+                llista_cursos.insertar_est(est, llista_assignatures.getAssig(nom_assig));
+
+                Estudiants est2 = new Estudiants(nom_estudiant, DNI);
+                llista_estudiants.insertar_element(0, est2);
+            }
+
+        } catch (ErrorElementExistent exc2) {
             JOptionPane.showMessageDialog(null, exc2.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        } catch (ErrorAssigNoExistent ex) {
+            JOptionPane.showMessageDialog(null, "Error Llista buida", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-              
+
     }
-    
+
     public static String est_assig_Curs(String nom_curs) {
         String res = "";
         try {
@@ -215,7 +159,7 @@ public class Practica_1Algorismia {
                 res += "Assignatura Obligatoria " + i + ": " + curs.getassigOb().getAssig(i).to_String()
                         + " [ Codi: " + curs.getassigOb().getAssig(i).getCodi() + " | Credits: "
                         + curs.getassigOb().getAssig(i).getCredits() + " ]" + "\n";
-                res += " " + curs.getassigOb().getAssig(i).ll_toString();
+                res += "" + curs.getassigOb().getAssig(i).ll_toString();
             }
             res += "\n";
             if (curs.getassigOp().get_tamany() == 0) {
@@ -227,7 +171,7 @@ public class Practica_1Algorismia {
                 res += "Assignatura Optativa " + i + ": " + curs.getassigOp().getAssig(i).to_String()
                         + " [ Codi: " + curs.getassigOp().getAssig(i).getCodi() + " | Perfil: "
                         + curs.getassigOp().getAssig(i).getPerfil() + " ]" + "\n";
-                res += " " + curs.getassigOp().getAssig(i).ll_toString();
+                res += "" + curs.getassigOp().getAssig(i).ll_toString();
             }
             res += "\n";
         } catch (ErrorElementExistent ex) {
@@ -238,77 +182,51 @@ public class Practica_1Algorismia {
 
     }
 
-
-    public static String est_curs_assig(String nom_assig){
+    public static String est_curs_assig(String nom_assig) {
         String res = "";
-        try{
+        try {
             Cursos aux = llista_cursos.getCurs_assig(nom_assig);
-            res+=(aux.to_String())+ "[ Tipus: "+ aux.getTipus()+ " | Especialitat: "
-                    + aux.getEspecialitat() +" ]\n";
-            res+=(aux.getll_est_Assig(nom_assig));
-        }catch(ErrorAssigNoExistent e){
-            System.out.println("Error: " + e.getMessage());
+            res += ("Curs: " + aux.to_String()) + " [ Tipus: " + aux.getTipus() + " | Especialitat: "
+                    + aux.getEspecialitat() + " ]\n";
+            res += (aux.getll_est_Assig(nom_assig));
+        } catch (ErrorAssigNoExistent e) {
+            res += "Error: " + e.getMessage();
         }
         return res;
 
     }
-    
-    public static String assigsicurs_est(int dni){
+
+    public static String assigsicurs_est(int dni) {
+
         String res = "";
         int cont = 0;
-        for (int i=0;i < llista_cursos.get_tamany(); i++){
+        for (int i = 0; i < llista_cursos.get_tamany(); i++) {
             //System.out.println("main: |" + llista_cursos.getCurs(i).getAssig_est(dni));
-            if(llista_cursos.getCurs(i).getAssig_est(dni).compareTo("") == 0){
+            if (llista_cursos.getCurs(i).getAssig_est(dni).compareTo("") == 0) {
                 cont++;
-            }else{
+            } else {
                 Cursos aux = llista_cursos.getCurs(i);
-                res+="Curs: " + (aux.to_String())+ "[ Tipus: "+ aux.getTipus()+ " | Especialitat: "
-                    + aux.getEspecialitat() +" ]\n";
-                res+=(aux.getAssig_est(dni) + "|\n");
+                res += "Curs: " + (aux.to_String()) + " [ Tipus: " + aux.getTipus() + " | Especialitat: "
+                        + aux.getEspecialitat() + " ] \n";
+                res += "Assignatures: " + (aux.getAssig_est(dni) + "| \n");
             }
         }
-        if(cont == llista_cursos.get_tamany()){
-            System.out.println("No existeix l'estudiant");
+        if (cont == llista_cursos.get_tamany()) {
+            res += "No existeix l'estudiant";
         }
         return res;
-        
-    }
-    
-    //METODES PER ENTRADA DADES
-    
-    private static String entrada_String(String entrada){
-        String sortida = null;
-        
-        try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println(entrada);
-            sortida = br.readLine();  
-        } catch (IOException ex) {
-            Logger.getLogger(Practica_1Algorismia.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return sortida;
+
     }
 
-    private static int entrada_Int(String entrada){
-        int sortida = 0;
-        try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println(entrada);
-            sortida = Integer.parseInt(br.readLine());
-        } catch (IOException ex) {
-            Logger.getLogger(Practica_1Algorismia.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return sortida;
-    }
-    
+
     public static void main(String[] args) {
         Pantalla pant = new Pantalla();
         pant.setVisible(true);
+        pant.setTitle("GESTOR COL·LEGI");
+        pant.setLocationRelativeTo(null);
         llista_cursos = new ll_cursos();
         llista_assignatures = new ll_assignatures();
         llista_estudiants = new ll_estudiants();
     }
 
-
-    
 }

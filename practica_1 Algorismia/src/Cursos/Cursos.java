@@ -4,6 +4,7 @@ package Cursos;
 
 import Assignatures.Assignatures;
 import Assignatures.Obligatories;
+import Assignatures.ll_assignatures;
 import Estudiants.Estudiants;
 import practica_1.algorismia.Element;
 import Excepcions.ErrorElementExistent;
@@ -33,6 +34,16 @@ public class Cursos extends Element {
        }   
     }
     
+    public void eliminar_Assignatures_Curs(ll_assignatures llista_assignatures){
+        //eliminar assignatures de la llista general donat un curs
+        for(int i = 0; i<ll_assigOb.get_tamany();i++){
+            llista_assignatures.eliminar_element(ll_assigOb.getAssig(i).to_String());
+        }
+        for(int j = 0; j<ll_assigOp.get_tamany();j++){
+            llista_assignatures.eliminar_element(ll_assigOp.getAssig(j).to_String());
+        }
+    }
+    
     public String getAssig_est(int dni){
         String res = "";
         res += ll_assigOb.getAssig_est(dni).to_String() + " [ Codi: " +
@@ -41,7 +52,6 @@ public class Cursos extends Element {
         res += ll_assigOp.getAssig_est(dni).to_String() + " [ Codi: " +
                ll_assigOp.getAssig_est(dni).getCodi() + " | Credits: "+
                ll_assigOp.getAssig_est(dni).getPerfil() + " ]";
-        //System.out.println("Cursos:" + res + "|");
         return res;
     }
        

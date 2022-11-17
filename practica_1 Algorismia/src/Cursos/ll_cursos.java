@@ -7,8 +7,7 @@ import Excepcions.ErrorAssigNoExistent;
 import java.util.ArrayList;
 import practica_1.algorismia.Element;
 import Excepcions.ErrorElementExistent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import practica_1.algorismia.Interficie_llistes;
 
 /**
@@ -82,7 +81,7 @@ public class ll_cursos implements Interficie_llistes {
             System.out.println("debug: " + aux.to_String());
             llista_cursos.remove(aux);
         } catch (ErrorElementExistent ex) {
-            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 

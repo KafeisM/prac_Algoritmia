@@ -4,6 +4,9 @@
  */
 package Vista;
 
+import java.awt.Color;
+import static practica_1.algorismia.Practica_1Algorismia.baixacurs;
+
 /**
  *
  * @author Usuario
@@ -27,32 +30,60 @@ public class baixa_curs extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        baixa_curs = new javax.swing.JTextField();
+        confirmar_altaCurs = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("prueba 3");
+        jLabel1.setText("BAIXA CURS");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 390, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(339, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(205, 205, 205))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(185, 185, 185)
-                .addComponent(jLabel1)
-                .addContainerGap(299, Short.MAX_VALUE))
-        );
+        baixa_curs.setText("Nom del Curs");
+        baixa_curs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                baixa_cursMousePressed(evt);
+            }
+        });
+        baixa_curs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                baixa_cursActionPerformed(evt);
+            }
+        });
+        add(baixa_curs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 160, -1));
+
+        confirmar_altaCurs.setBackground(new java.awt.Color(51, 102, 255));
+        confirmar_altaCurs.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        confirmar_altaCurs.setForeground(new java.awt.Color(255, 255, 255));
+        confirmar_altaCurs.setText("Confirmar");
+        confirmar_altaCurs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmar_altaCursActionPerformed(evt);
+            }
+        });
+        add(confirmar_altaCurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 100, 40));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void baixa_cursMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_baixa_cursMousePressed
+        baixa_curs.setText("");
+        baixa_curs.setForeground(Color.BLACK);
+    }//GEN-LAST:event_baixa_cursMousePressed
+
+    private void baixa_cursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixa_cursActionPerformed
+
+    }//GEN-LAST:event_baixa_cursActionPerformed
+
+    private void confirmar_altaCursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmar_altaCursActionPerformed
+
+        baixacurs(baixa_curs.getText());
+    }//GEN-LAST:event_confirmar_altaCursActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField baixa_curs;
+    private javax.swing.JButton confirmar_altaCurs;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

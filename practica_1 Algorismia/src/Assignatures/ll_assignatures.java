@@ -1,5 +1,7 @@
 package Assignatures;
 
+import Excepcions.ErrorAssigNoExistent;
+import javax.swing.JOptionPane;
 import practica_1.algorismia.Element;
 import practica_1.algorismia.Interficie_llistes;
 
@@ -43,11 +45,14 @@ public class ll_assignatures implements Interficie_llistes{
         return tam;
     }
     
-    public Assignatures getAssig(String nom){
+    public Assignatures getAssig(String nom) throws ErrorAssigNoExistent{
         boolean trobat = false;
-        
         Assignatures aux = new Assignatures("s",0);
         aux.setSeg(capçalera_assig);
+        
+        if (capçalera_assig == null) {
+                throw new ErrorAssigNoExistent("No existeixen assignatures");
+            }
         
         //System.out.println("entrada: " + nom);
         while(aux.getSeg() != null & !trobat){
@@ -58,8 +63,12 @@ public class ll_assignatures implements Interficie_llistes{
                 aux.setSeg(aux.getSeg().getSeg());
             }
         }
-        System.out.println("entrada: " + aux.getSeg().to_String());
-        return aux.getSeg();
+
+        if(trobat == false){
+            return null;
+        }else{
+            return aux.getSeg();
+        }
     }
 
     @Override
@@ -85,24 +94,32 @@ public class ll_assignatures implements Interficie_llistes{
     }
 
     @Override
-    public void eliminar_element(String nom) {
+    public void eliminar_element(String nom){
         //eliminar primer node 
-        if (capçalera_assig.to_String().equals(nom)) {
-            capçalera_assig = capçalera_assig.getSeg();
-        } else {
-            Assignatures node_actual = new Assignatures("aux", 0);
-            Assignatures node_anterior = new Assignatures("aux", 1);
-
-            node_actual.setSeg(capçalera_assig);
-            node_anterior.setSeg(null);
-
-            while (node_actual.getSeg() != null) {
-                if (node_actual.getSeg().to_String().equals(nom)) {
-                    node_anterior.getSeg().setSeg(node_actual.getSeg().getSeg());
-                }
-                node_anterior.setSeg(node_actual.getSeg());
-                node_actual.setSeg(node_actual.getSeg().getSeg());
+        try {
+            if (capçalera_assig == null) {
+                throw new ErrorAssigNoExistent("No existeixen assignatures");
             }
+
+            if (capçalera_assig.to_String().equals(nom)) {
+                capçalera_assig = capçalera_assig.getSeg();
+            } else {
+                Assignatures node_actual = new Assignatures("aux", 0);
+                Assignatures node_anterior = new Assignatures("aux", 1);
+
+                node_actual.setSeg(capçalera_assig);
+                node_anterior.setSeg(null);
+
+                while (node_actual.getSeg() != null) {
+                    if (node_actual.getSeg().to_String().equals(nom)) {
+                        node_anterior.getSeg().setSeg(node_actual.getSeg().getSeg());
+                    }
+                    node_anterior.setSeg(node_actual.getSeg());
+                    node_actual.setSeg(node_actual.getSeg().getSeg());
+                }
+            }
+        } catch (ErrorAssigNoExistent exc) {
+            JOptionPane.showMessageDialog(null, exc.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
 
     }

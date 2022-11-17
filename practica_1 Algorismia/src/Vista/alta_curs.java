@@ -10,7 +10,7 @@ import static Cursos.Enum_Especialitats.INFORMÀTICA;
 import static Cursos.Enum_Especialitats.MECÀNICA;
 import java.awt.Color;
 import javax.swing.JOptionPane;
-import static practica_1.algorismia.Practica_1Algorismia.altaCurs2;
+import static practica_1.algorismia.Practica_1Algorismia.altaCurs;
 
 /**
  *
@@ -187,7 +187,7 @@ public class alta_curs extends javax.swing.JPanel {
                 }
             }
 
-            altaCurs2(nom, cod, esp, any, esFP);
+            altaCurs(nom, cod, esp, any, esFP);
         }
 
         
