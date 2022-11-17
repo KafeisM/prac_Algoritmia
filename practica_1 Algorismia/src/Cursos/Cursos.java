@@ -57,18 +57,12 @@ public class Cursos extends Element {
     
     public String getAssig_est(int dni){
         String res = "";
-
         if (ll_assigOb.getAssig_est(dni) != null) {
-            res += ll_assigOb.getAssig_est(dni).to_String() + " | Codi: "
-                    + ll_assigOb.getAssig_est(dni).getCodi() + " | Crèdits: "
-                    + ll_assigOb.getAssig_est(dni).getCredits() + "\n";
-
+            res += ll_assigOb.getAssig_est(dni) + "\n";
         }
 
         if (ll_assigOp.getAssig_est(dni) != null) {
-            res += ll_assigOp.getAssig_est(dni).to_String() + " | Codi: "
-                    + ll_assigOp.getAssig_est(dni).getCodi() + " | Perfil: "
-                    + ll_assigOp.getAssig_est(dni).getPerfil() + "\n";
+            res += ll_assigOp.getAssig_est(dni) + "\n";
         }
 
         return res;
