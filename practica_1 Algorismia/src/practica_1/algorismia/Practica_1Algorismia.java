@@ -16,11 +16,6 @@ import Cursos.ll_cursos;
 import Estudiants.Estudiants;
 import Estudiants.ll_estudiants;
 import Vista.Pantalla;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -146,6 +141,7 @@ public class Practica_1Algorismia {
 
                 Estudiants est2 = new Estudiants(nom_estudiant, DNI);
                 llista_estudiants.insertar_element(0, est2);
+                llista_estudiants = llista_estudiants.ordenar();
             }
 
         } catch (ErrorElementExistent exc2) {

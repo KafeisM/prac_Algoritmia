@@ -7,7 +7,7 @@ import practica_1.algorismia.Element;
  *
  * @author jordi
  */
-public class Estudiants extends Element{
+public class Estudiants extends Element implements Comparable<Estudiants>{
     
     int DNI;
     Estudiants seg;
@@ -33,5 +33,12 @@ public class Estudiants extends Element{
     public Estudiants getSeg(){
         return seg;
     }
+
+    @Override
+    public int compareTo(Estudiants o) {
+        return this.to_String().compareTo(o.to_String());
+    }
+    
+
     
 }

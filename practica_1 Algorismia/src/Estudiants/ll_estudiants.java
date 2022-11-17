@@ -1,5 +1,8 @@
 package Estudiants;
 
+import Assignatures.Assignatures;
+import java.util.ArrayList;
+import java.util.Collections;
 import practica_1.algorismia.Element;
 import practica_1.algorismia.Interficie_llistes;
 
@@ -31,7 +34,16 @@ public class ll_estudiants implements Interficie_llistes {
 
     @Override
     public int get_tamany() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int tam = 0;
+        Estudiants aux = new Estudiants("s",0);
+        aux.setSeg(capçalera_estudiant);
+        
+        while(aux.getSeg() != null){
+            tam++;
+            aux.setSeg(aux.getSeg().getSeg());
+        }
+        
+        return tam;
     }
 
     @Override
@@ -39,23 +51,25 @@ public class ll_estudiants implements Interficie_llistes {
         Estudiants aux  = (Estudiants) el;
         aux.setSeg(capçalera_estudiant);
         capçalera_estudiant = aux;
-        ordenar();
+        
     }
     
-    private void ordenar(){
+    public ll_estudiants ordenar(){
+        
         Estudiants aux = new Estudiants("s",0);
         aux.setSeg(capçalera_estudiant);
-        
-        while((aux.getSeg() != null) && (aux.getSeg().getSeg()!=null)){
-            if(aux.getSeg().to_String().compareTo(aux.getSeg().getSeg().to_String()) > 0){
-                capçalera_estudiant = aux.getSeg().getSeg();
-                aux.getSeg().setSeg(capçalera_estudiant.getSeg());
-                capçalera_estudiant.setSeg(aux.getSeg());
-            }else if(aux.getSeg().to_String().compareTo(aux.getSeg().getSeg().to_String()) == 0){
-                eliminar_element(aux.getSeg().obtenir_nom());
-            }
+        ArrayList<Estudiants> ArrayAux = new ArrayList<Estudiants>();
+        for(int i = 0; i<this.get_tamany();i++){
+            ArrayAux.add(aux.getSeg());
             aux.setSeg(aux.getSeg().getSeg());
         }
+
+        Collections.sort(ArrayAux);
+        ll_estudiants llistaAux = new ll_estudiants();
+        for(int i = 0; i<ArrayAux.size();i++){
+            llistaAux.insertar_element(i, ArrayAux.get(i));
+        }
+        return llistaAux;
     }
 
     @Override
