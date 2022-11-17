@@ -39,20 +39,20 @@ public class ll_assignatures_op_curs implements Interficie_llistes {
         return llista.get(i-1);
     }
     
-    public Optatives getAssig_est(int dni){
+    public String getAssig_est(int dni){
         int i;
-        boolean trobat = false;
-        for (i = 0;(i < llista.size()) && (!trobat); i++){
+        String res = "";
+        for (i = 0;(i < llista.size()); i++){
             if (llista.get(i).getll_Estudiants().cerca_est(dni)){
-                trobat = true;
+                res += llista.get(i).obtenir_nom() + " [ Codi: " +
+                       llista.get(i).getCodi() + " [ Perfil: " +
+                       llista.get(i).getPerfil() + " ]\n";
             }
         }
-        if (trobat){
-            //System.out.println("ll_ass_op: " + llista.get(i-1));
-            return llista.get(i-1);
-        }else{
+        if (res == ""){
             return null;
-            //throw new ErrorAssigNoExistent("Error, no existeix");
+        }else{
+            return res;
         }
     }
     
