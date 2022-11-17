@@ -39,6 +39,4 @@ public class Estudiants extends Element implements Comparable<Estudiants>{
         return this.to_String().compareTo(o.to_String());
     }
     
-
-    
 }
