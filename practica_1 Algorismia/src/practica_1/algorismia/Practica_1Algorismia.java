@@ -87,11 +87,11 @@ public class Practica_1Algorismia {
                     opcio = entrada_Int(menu);
                     break;
                 case 6:
-                    est_curs_assig();
+                    //est_curs_assig();
                     opcio = entrada_Int(menu);
                     break;
                 case 7:
-                    assigsicurs_est();
+                    //assigsicurs_est();
                     opcio = entrada_Int(menu);
                     break;
                 default:
@@ -285,7 +285,9 @@ public class Practica_1Algorismia {
             }
             //System.out.println("5: " + curs.getassigOb().get_tamany());
             for (int i=0; i<curs.getassigOb().get_tamany(); i++){
-                res += "Assignatura Obligatoria " + i + ": " + curs.getassigOb().getAssig(i).to_String() +"\n";
+                res += "Assignatura Obligatoria " + i + ": " + curs.getassigOb().getAssig(i).to_String() 
+                        + " [ Codi: " + curs.getassigOb().getAssig(i).getCodi() + " | Credits: "+
+                        curs.getassigOb().getAssig(i).getCredits()+ " ]" +"\n";
                 res += " " + curs.getassigOb().getAssig(i).ll_toString();
             }
             res+="\n";
@@ -294,7 +296,9 @@ public class Practica_1Algorismia {
             }
             //System.out.println("5: " + curs.getassigOb().get_tamany());
             for (int i=0; i<curs.getassigOp().get_tamany(); i++){
-                res += "Assignatura Optativa " + i + ": " + curs.getassigOp().getAssig(i).to_String() +"\n";
+                res += "Assignatura Optativa " + i + ": " + curs.getassigOp().getAssig(i).to_String() 
+                        + " [ Codi: " + curs.getassigOp().getAssig(i).getCodi() + " | Perfil: "+
+                        curs.getassigOp().getAssig(i).getPerfil()+ " ]" +"\n";
                 res += " " + curs.getassigOp().getAssig(i).ll_toString();
             }
             res+="\n";
@@ -306,35 +310,37 @@ public class Practica_1Algorismia {
         
     } 
     
-    private static void est_curs_assig(){
-         
+    private static String est_curs_assig(String nom_assig){
+        String res = "";
         try{
-            String nom_assig = entrada_String("Nom assignatura: ");
             Cursos aux = llista_cursos.getCurs_assig(nom_assig);
-            System.out.println("Curs: " + aux.to_String());
-            System.out.println("Llista estudiants: " + aux.getll_est_Assig(nom_assig));
+            res+=(aux.to_String())+ "[ Tipus: "+ aux.getTipus()+ " | Especialitat: "
+                    + aux.getEspecialitat() +" ]\n";
+            res+=(aux.getll_est_Assig(nom_assig));
         }catch(ErrorAssigNoExistent e){
             System.out.println("Error: " + e.getMessage());
         }
+        return res;
     }
     
-    private static void assigsicurs_est(){
-        
-        int dni = entrada_Int("DNI de l'estudiant: ");
-        String assigs;
+    private static String assigsicurs_est(int dni){
+        String res = "";
         int cont = 0;
         for (int i=0;i < llista_cursos.get_tamany(); i++){
             //System.out.println("main: |" + llista_cursos.getCurs(i).getAssig_est(dni));
             if(llista_cursos.getCurs(i).getAssig_est(dni).compareTo("") == 0){
                 cont++;
             }else{
-                System.out.println("Curs :" + llista_cursos.getCurs(i).to_String());
-                System.out.println(llista_cursos.getCurs(i).getAssig_est(dni) + "|");
+                Cursos aux = llista_cursos.getCurs(i);
+                res+="Curs: " + (aux.to_String())+ "[ Tipus: "+ aux.getTipus()+ " | Especialitat: "
+                    + aux.getEspecialitat() +" ]\n";
+                res+=(aux.getAssig_est(dni) + "|\n");
             }
         }
         if(cont == llista_cursos.get_tamany()){
             System.out.println("No existeix l'estudiant");
         }
+        return res;
         
     }
     

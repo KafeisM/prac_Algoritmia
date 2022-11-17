@@ -30,6 +30,10 @@ public class Obligatories extends Assignatures{
         }
     }
     
+    public int getCredits(){
+        return credits;
+    }
+    
     public String ll_toString(){
         return llista_est.ll_toString();
     }

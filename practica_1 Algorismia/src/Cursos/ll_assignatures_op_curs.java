@@ -3,6 +3,7 @@ package Cursos;
 
 import Assignatures.Assignatures;
 import Assignatures.Optatives;
+import Assignatures.Perfil;
 import Estudiants.Estudiants;
 import java.util.ArrayList;
 import practica_1.algorismia.Element;
@@ -38,7 +39,7 @@ public class ll_assignatures_op_curs implements Interficie_llistes {
         return llista.get(i-1);
     }
     
-    public Assignatures getAssig_est(int dni){
+    public Optatives getAssig_est(int dni){
         int i;
         boolean trobat = false;
         for (i = 0;(i < llista.size()) && (!trobat); i++){
@@ -50,7 +51,7 @@ public class ll_assignatures_op_curs implements Interficie_llistes {
             //System.out.println("ll_ass_op: " + llista.get(i-1));
             return llista.get(i-1);
         }else{
-            return new Assignatures("",0);
+            return new Optatives("",0,Perfil.PRÀCTIC);
         }
     }
     

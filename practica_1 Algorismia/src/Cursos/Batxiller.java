@@ -17,6 +17,10 @@ public class Batxiller extends Cursos{
         this.curs = curs;
     }
     
+    public String getEspecialitat(){
+        return curs.toString();
+    }
+    
     @Override
      public String to_String(){
         return this.obtenir_nom();

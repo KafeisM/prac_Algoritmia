@@ -14,6 +14,10 @@ public class FP extends Cursos{
         this.especialitat = esp;
     }
     
+    public String getEspecialitat(){
+        return especialitat.toString();
+    }
+    
     @Override
      public String to_String(){
         return this.obtenir_nom();

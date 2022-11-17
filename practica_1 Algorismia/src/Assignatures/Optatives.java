@@ -27,6 +27,10 @@ public class Optatives extends Assignatures{
         }
     }
     
+    public String getPerfil(){
+        return perfil.toString();
+    }
+    
     public ll_estudiants_assigOP getll_Estudiants(){
         return llista_est;
     }

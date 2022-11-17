@@ -35,8 +35,12 @@ public class Cursos extends Element {
     
     public String getAssig_est(int dni){
         String res = "";
-        res += ll_assigOb.getAssig_est(dni).to_String() + "";
-        res += ll_assigOp.getAssig_est(dni).to_String() + "";
+        res += ll_assigOb.getAssig_est(dni).to_String() + " [ Codi: " +
+               ll_assigOb.getAssig_est(dni).getCodi() + " | Credits: "+
+               ll_assigOb.getAssig_est(dni).getCredits() + " ]";
+        res += ll_assigOp.getAssig_est(dni).to_String() + " [ Codi: " +
+               ll_assigOp.getAssig_est(dni).getCodi() + " | Credits: "+
+               ll_assigOp.getAssig_est(dni).getPerfil() + " ]";
         //System.out.println("Cursos:" + res + "|");
         return res;
     }
@@ -52,6 +56,24 @@ public class Cursos extends Element {
     
     public ll_assignatures_op_curs getassigOp(){
         return ll_assigOp;
+    }
+    
+    public String getTipus(){
+        if(this instanceof FP){
+            return "FP";
+        }else{
+            return "Batxiller";
+        }
+    }
+    
+    public String getEspecialitat(){
+        if(this instanceof FP){
+            FP aux = (FP)this;
+            return (aux.getEspecialitat());
+        }else{
+            Batxiller aux = (Batxiller)this;
+            return (aux.getEspecialitat());
+        }
     }
     
     public String to_String(){

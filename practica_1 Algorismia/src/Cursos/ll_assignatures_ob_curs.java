@@ -48,7 +48,7 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
         return trobat;
     }
     
-    public Assignatures getAssig_est(int dni){
+    public Obligatories getAssig_est(int dni){
         int i;
         boolean trobat = false;
         for (i = 0;(i < llista.size()) && (!trobat); i++){
@@ -61,7 +61,7 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
             //System.out.println("ll_ass_ob: " + llista.get(i-1));
             return llista.get(i-1);
         }else{
-            return new Assignatures("",0);
+            return new Obligatories("",0,0);
         }
     }
 
