@@ -70,7 +70,6 @@ public class Practica_1Algorismia {
                     break;
                 case 2:
                     System.out.println("Abans Llista estudiants:\n " + llista_estudiants.ll_toString());
-                    mat_estudiants();
                     System.out.println("Llista estudiants:\n " + llista_estudiants.ll_toString());
                     opcio = entrada_Int(menu);
                     break;
@@ -260,13 +259,10 @@ public class Practica_1Algorismia {
     
     //inserir estudiant a un curs i assignatura
     //inserir el mateix estudiant a la llista d'estudiants
-    private static void mat_estudiants(){
+    public static void mat_estudiants(String nom_estudiant, int DNI, String nom_assig){
         
         
         try{
-            String nom_estudiant = entrada_String("Nom de l'estudiant: ");
-            int DNI = entrada_Int("DNI de l'estudiant: ");
-            String nom_assig = entrada_String("Nom assignatura: ");
             
             Estudiants est = new Estudiants(nom_estudiant,DNI);
             llista_cursos.insertar_est(est,llista_assignatures.getAssig(nom_assig));
@@ -275,7 +271,7 @@ public class Practica_1Algorismia {
             llista_estudiants.insertar_element(0, est2);
             
         }catch(ErrorElementExistent exc2){
-            System.out.println("Error: "+exc2.getMessage());
+            JOptionPane.showMessageDialog(null, exc2.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
               
     }
@@ -290,16 +286,18 @@ public class Practica_1Algorismia {
             //System.out.println("5: " + curs.getassigOb().get_tamany());
             for (int i=0; i<curs.getassigOb().get_tamany(); i++){
                 res += "Assignatura Obligatoria " + i + ": " + curs.getassigOb().getAssig(i).to_String() +"\n";
-                res += curs.getassigOb().getAssig(i).ll_toString();
+                res += " " + curs.getassigOb().getAssig(i).ll_toString();
             }
+            res+="\n";
             if (curs.getassigOp().get_tamany() == 0){
                 res += "No hi ha assig. OP";
             }
             //System.out.println("5: " + curs.getassigOb().get_tamany());
             for (int i=0; i<curs.getassigOp().get_tamany(); i++){
                 res += "Assignatura Optativa " + i + ": " + curs.getassigOp().getAssig(i).to_String() +"\n";
-                res += curs.getassigOp().getAssig(i).ll_toString();
+                res += " " + curs.getassigOp().getAssig(i).ll_toString();
             }
+            res+="\n";
         } catch (ErrorElementExistent ex) {
             res += ex.getMessage();    //error curs no existent
         }

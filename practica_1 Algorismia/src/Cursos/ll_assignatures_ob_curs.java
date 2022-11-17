@@ -87,9 +87,7 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
     
     public void insertar_est_assig(Estudiants est, Assignatures assig) throws ErrorElementExistent{
         
-        if (llista.isEmpty()){
-            llista.get(0).insertar_est(est);
-        }else{
+        if (!(llista.isEmpty())){
             for (int i=0; i<llista.size() ;i++){
                 System.out.println(llista.get(i).obtenir_nom());
                 //System.out.println("ass.ob.curs: " + assig.obtenir_nom() + " " +llista.get(i).obtenir_nom());

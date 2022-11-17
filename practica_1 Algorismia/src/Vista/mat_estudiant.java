@@ -4,6 +4,9 @@
  */
 package Vista;
 
+import java.awt.Color;
+import static practica_1.algorismia.Practica_1Algorismia.mat_estudiants;
+
 /**
  *
  * @author Usuario
@@ -27,19 +30,114 @@ public class mat_estudiant extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        nom_assig = new javax.swing.JTextField();
+        DNI = new javax.swing.JTextField();
+        confirmar_altaCurs = new javax.swing.JButton();
+        nom_est1 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(0, 0));
         setPreferredSize(new java.awt.Dimension(590, 500));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("prueba 5");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
+        jLabel1.setText("MATRICULAR ESTUIANT:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 50));
+
+        nom_assig.setText("Nom del Assignatura");
+        nom_assig.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                nom_assigMousePressed(evt);
+            }
+        });
+        nom_assig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nom_assigActionPerformed(evt);
+            }
+        });
+        add(nom_assig, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 160, -1));
+
+        DNI.setText("DNI");
+        DNI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                DNIMousePressed(evt);
+            }
+        });
+        DNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DNIActionPerformed(evt);
+            }
+        });
+        add(DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 160, -1));
+
+        confirmar_altaCurs.setBackground(new java.awt.Color(51, 102, 255));
+        confirmar_altaCurs.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        confirmar_altaCurs.setForeground(new java.awt.Color(255, 255, 255));
+        confirmar_altaCurs.setText("Confirmar");
+        confirmar_altaCurs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmar_altaCursActionPerformed(evt);
+            }
+        });
+        add(confirmar_altaCurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, 120, 50));
+
+        nom_est1.setText("Nom del Estudiant");
+        nom_est1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                nom_est1MousePressed(evt);
+            }
+        });
+        nom_est1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nom_est1ActionPerformed(evt);
+            }
+        });
+        add(nom_est1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 160, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nom_assigMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nom_assigMousePressed
+        nom_assig.setText("");
+        nom_assig.setForeground(Color.BLACK);
+    }//GEN-LAST:event_nom_assigMousePressed
+
+    private void nom_assigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nom_assigActionPerformed
+
+    }//GEN-LAST:event_nom_assigActionPerformed
+
+    private void DNIActionPenom_assigrmed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNIActionPerformed
+
+    }//GEN-LAST:event_DNIActionPerformed
+
+    private void DNIMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DNIMousePressed
+        DNI.setText("");
+        DNI.setForeground(Color.BLACK);
+    }//GEN-LAST:event_DNIMousePressed
+
+    private void DNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codiActionPerformed
+
+    }//GEN-LAST:event_codiActionPerformed
+
+    private void confirmar_altaCursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmar_altaCursActionPerformed
+
+        mat_estudiants(nom_est1.getText(),Integer.parseInt(DNI.getText()),nom_assig.getText());
+    }//GEN-LAST:event_confirmar_altaCursActionPerformed
+
+    private void nom_est1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nom_est1MousePressed
+        nom_est1.setText("");
+        nom_est1.setForeground(Color.BLACK);
+    }//GEN-LAST:event_nom_est1MousePressed
+
+    private void nom_est1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nom_est1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nom_est1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField DNI;
+    private javax.swing.JButton confirmar_altaCurs;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField nom_assig;
+    private javax.swing.JTextField nom_est1;
     // End of variables declaration//GEN-END:variables
 }
