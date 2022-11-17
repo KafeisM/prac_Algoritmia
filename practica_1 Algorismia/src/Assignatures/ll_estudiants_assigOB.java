@@ -2,8 +2,11 @@
 package Assignatures;
 
 import Estudiants.Estudiants;
+import Estudiants.ll_estudiants;
 import practica_1.algorismia.Element;
 import Excepcions.ErrorElementExistent;
+import java.util.ArrayList;
+import java.util.Collections;
 import practica_1.algorismia.Interficie_llistes;
 
 /**
@@ -20,14 +23,17 @@ public class ll_estudiants_assigOB implements Interficie_llistes {
     
     @Override
     public String ll_toString() {
-        String res = "";
-        Estudiants aux = new Estudiants("zzz",0);
+        String llista = "";
+        Estudiants aux = new Estudiants("s",0);
         aux.setSeg(capçalera_est);
-        while (aux.getSeg()!=null){
-            res += "| [" + aux.getSeg().to_String() + "] ";
+        
+        while(aux.getSeg() != null){
+            System.out.println(aux.getSeg().to_String());
+            llista += (aux.getSeg()).to_String() + " | DNI: " + (aux.getSeg()).getDNI() + "\t" ;
             aux.setSeg(aux.getSeg().getSeg());
         }
-        return res;
+        
+        return llista;
     }
     
     public boolean cerca_est(int dni){
@@ -63,7 +69,7 @@ public class ll_estudiants_assigOB implements Interficie_llistes {
             Estudiants aux  = (Estudiants) el;
             aux.setSeg(capçalera_est);
             capçalera_est = aux;
-            //ordenar();
+            
         }
         
     }
@@ -81,27 +87,23 @@ public class ll_estudiants_assigOB implements Interficie_llistes {
         return existeix;
     }
     
-    private void ordenar(){
+    private ll_estudiants_assigOB ordenar() throws ErrorElementExistent{
         Estudiants aux = new Estudiants("s",0);
-        Estudiants aux2;
         aux.setSeg(capçalera_est);
-        
-        
-        while((aux.getSeg() != null) && (aux.getSeg().getSeg()!=null)){
-            
-            if(aux.getSeg().to_String().compareTo(aux.getSeg().getSeg().to_String()) > 0){
-                
-                System.out.println("aux: " + aux.getSeg().obtenir_nom());
-                if (capçalera_est.obtenir_nom() == aux.getSeg().obtenir_nom()){
-                    capçalera_est = aux.getSeg().getSeg();
-                }
-                aux2 = aux.getSeg().getSeg();
-                aux.getSeg().setSeg(aux.getSeg().getSeg().getSeg());
-                capçalera_est.setSeg(aux.getSeg());
-            }else{
-                aux.setSeg(aux.getSeg().getSeg());
-            }
+        ArrayList<Estudiants> ArrayAux = new ArrayList<Estudiants>();
+        for(int i = 0; i<this.get_tamany();i++){
+            ArrayAux.add(aux.getSeg());
+            aux.setSeg(aux.getSeg().getSeg());
         }
+
+        Collections.sort(ArrayAux, Collections.reverseOrder());
+        
+        ll_estudiants_assigOB llistaAux = new ll_estudiants_assigOB();
+        
+        for(int i = 0; i<ArrayAux.size();i++){
+            llistaAux.insertar_element(i, ArrayAux.get(i));
+        }
+        return llistaAux;
     }
 
     @Override

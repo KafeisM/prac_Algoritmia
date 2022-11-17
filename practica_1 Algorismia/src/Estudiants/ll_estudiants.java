@@ -64,7 +64,7 @@ public class ll_estudiants implements Interficie_llistes {
             aux.setSeg(aux.getSeg().getSeg());
         }
 
-        Collections.sort(ArrayAux);
+        Collections.sort(ArrayAux, Collections.reverseOrder());
         ll_estudiants llistaAux = new ll_estudiants();
         for(int i = 0; i<ArrayAux.size();i++){
             llistaAux.insertar_element(i, ArrayAux.get(i));
