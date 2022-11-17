@@ -59,24 +59,63 @@ public class ll_estudiants_assigOP implements Interficie_llistes {
 
     @Override
     public void insertar_element(int i, Element el) throws ErrorElementExistent{
-        Estudiants input = (Estudiants) el;
-        Estudiants aux = capçalera_est;
-        input.setSeg(capçalera_est);
-        capçalera_est = input;
-
-        while((input.getSeg() != null) && (input.to_String().compareTo(input.getSeg().to_String()) < 0)){
-            if(input.to_String().compareTo(input.getSeg().to_String()) != 0){
-                input.setSeg(input.getSeg().getSeg());
-                capçalera_est = aux;
-            }else{
-                throw new ErrorElementExistent("L'estudiant ja existeix");
+        if(est_existent((Estudiants)el)){
+            throw new ErrorElementExistent("L'estudiant ja existeix");
+        }else{
+            Estudiants aux  = (Estudiants) el;
+            aux.setSeg(capçalera_est);
+            capçalera_est = aux;
+            ordenar();
+        }
+        
+    }
+    
+    private boolean est_existent(Estudiants est){
+        boolean existeix = false;
+        Estudiants aux = new Estudiants("s",0);
+        aux.setSeg(capçalera_est);
+        while((aux.getSeg() != null)&& (!existeix)){
+            if(aux.getSeg().to_String().compareTo(est.obtenir_nom()) == 0){
+                existeix = true;
             }
-        } 
+            aux.setSeg(aux.getSeg().getSeg());
+        }
+        return existeix;
+    }
+    
+    private void ordenar(){
+        Estudiants aux = new Estudiants("s",0);
+        aux.setSeg(capçalera_est);
+        
+        while((aux.getSeg() != null) && (aux.getSeg().getSeg()!=null)){
+            if(aux.getSeg().to_String().compareTo(aux.getSeg().getSeg().to_String()) > 0){
+                capçalera_est = aux.getSeg().getSeg();
+                aux.getSeg().setSeg(capçalera_est.getSeg());
+                capçalera_est.setSeg(aux.getSeg());
+            }
+            aux.setSeg(aux.getSeg().getSeg());
+        }
     }
 
     @Override
     public void eliminar_element(String nom) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (capçalera_est.to_String().equals(nom)) {
+            capçalera_est = capçalera_est.getSeg();
+        } else {
+            Estudiants node_actual = new Estudiants("aux", 0);
+            Estudiants node_anterior = new Estudiants("aux", 1);
+
+            node_actual.setSeg(capçalera_est);
+            node_anterior.setSeg(null);
+
+            while (node_actual.getSeg() != null) {
+                if (node_actual.getSeg().to_String().equals(nom)) {
+                    node_anterior.getSeg().setSeg(node_actual.getSeg().getSeg());
+                }
+                node_anterior.setSeg(node_actual.getSeg());
+                node_actual.setSeg(node_actual.getSeg().getSeg());
+            }
+        }
     }
 
 

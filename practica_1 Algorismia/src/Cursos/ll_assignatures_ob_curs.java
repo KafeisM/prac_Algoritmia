@@ -89,11 +89,11 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
         
         if (!(llista.isEmpty())){
             for (int i=0; i<llista.size() ;i++){
-                System.out.println(llista.get(i).obtenir_nom());
+                //System.out.println(llista.get(i).obtenir_nom());
                 //System.out.println("ass.ob.curs: " + assig.obtenir_nom() + " " +llista.get(i).obtenir_nom());
                 if(llista.get(i).obtenir_nom().compareTo(assig.obtenir_nom()) == 0){
                     llista.get(i).insertar_est(est);
-                    System.out.println(llista.get(i).to_String());
+                    System.out.println("ass.ob.curs dedins: " + llista.get(i).obtenir_nom());
                 }
             }
         }
