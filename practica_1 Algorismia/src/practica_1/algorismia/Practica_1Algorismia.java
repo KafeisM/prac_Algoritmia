@@ -161,7 +161,7 @@ public class Practica_1Algorismia {
         try {
             Cursos curs = llista_cursos.getCurs(nom_curs);
             if (curs.getassigOb().get_tamany() == 0) {
-                res += "No hi ha assig. OB";
+                res += "No hi ha assig. OBLIGATORIES";
             }
             //System.out.println("5: " + curs.getassigOb().get_tamany());
             for (int i = 0; i < curs.getassigOb().get_tamany(); i++) {
@@ -169,11 +169,11 @@ public class Practica_1Algorismia {
                 res += "Assignatura Obligatoria " + i + ": " + curs.getassigOb().getAssig(i).to_String()
                         + " [ Codi: " + curs.getassigOb().getAssig(i).getCodi() + " | Credits: "
                         + curs.getassigOb().getAssig(i).getCredits() + " ]" + "\n";
-                res += "" + curs.getassigOb().getAssig(i).ll_toString();
+                res += "Estudiants: " + curs.getassigOb().getAssig(i).ll_toString() + "\n";
             }
             res += "\n";
             if (curs.getassigOp().get_tamany() == 0) {
-                res += "No hi ha assig. OP";
+                res += "No hi ha assig. OPTATIVES";
             }
             //System.out.println("5: " + curs.getassigOb().get_tamany());
             for (int i = 0; i < curs.getassigOp().get_tamany(); i++) {
@@ -181,7 +181,7 @@ public class Practica_1Algorismia {
                 res += "Assignatura Optativa " + i + ": " + curs.getassigOp().getAssig(i).to_String()
                         + " [ Codi: " + curs.getassigOp().getAssig(i).getCodi() + " | Perfil: "
                         + curs.getassigOp().getAssig(i).getPerfil() + " ]" + "\n";
-                res += "" + curs.getassigOp().getAssig(i).ll_toString();
+                res += "Estudiants: " + curs.getassigOp().getAssig(i).ll_toString() + "\n";
             }
             res += "\n";
         } catch (ErrorElementExistent ex) {
@@ -206,8 +206,7 @@ public class Practica_1Algorismia {
 
     }
 
-    public static String assigsicurs_est(int dni) {
-
+    public static String assigsicurs_est2(int dni) {
         String res = "";
         int cont = 0;
         for (int i = 0; i < llista_cursos.get_tamany(); i++) {
@@ -225,7 +224,28 @@ public class Practica_1Algorismia {
             res += "No existeix l'estudiant";
         }
         return res;
+    }
+    
+    public static String assigsicurs_est(int dni) {
+        
+ 
+        String res = "";
+        boolean existeix = false;
+        int i;
 
+        for(i = 0; i < llista_cursos.get_tamany(); i++){
+            if (!"".equals(llista_cursos.getCurs(i).getAssig_est(dni))){
+                res += llista_cursos.getCurs(i).getAssig_est(dni) 
+                        + "Curs: " + llista_cursos.getCurs(i).to_String() + "\n";
+                existeix = true;  
+            }
+        }
+        
+        if(existeix == false){
+            res += "Error, no es posible realitzar la cerca";
+        }
+        
+        return res;
     }
 
 

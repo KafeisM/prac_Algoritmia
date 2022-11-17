@@ -5,6 +5,7 @@ import Assignatures.Assignatures;
 import Assignatures.Optatives;
 import Assignatures.Perfil;
 import Estudiants.Estudiants;
+import Excepcions.ErrorAssigNoExistent;
 import java.util.ArrayList;
 import practica_1.algorismia.Element;
 import Excepcions.ErrorElementExistent;
@@ -50,7 +51,8 @@ public class ll_assignatures_op_curs implements Interficie_llistes {
             //System.out.println("ll_ass_op: " + llista.get(i-1));
             return llista.get(i-1);
         }else{
-            return new Optatives("",0,Perfil.PRÀCTIC);
+            return null;
+            //throw new ErrorAssigNoExistent("Error, no existeix");
         }
     }
     

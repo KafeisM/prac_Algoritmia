@@ -42,7 +42,7 @@ public class mat_estudiant extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("MATRICULAR ESTUIANT:");
+        jLabel1.setText("MATRICULAR ESTUDIANT:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 50));
 
         nom_assig.setText("Nom del Assignatura");

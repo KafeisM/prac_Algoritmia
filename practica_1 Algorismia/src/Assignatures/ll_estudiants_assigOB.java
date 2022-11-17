@@ -35,7 +35,6 @@ public class ll_estudiants_assigOB implements Interficie_llistes {
         Estudiants aux = new Estudiants("zzz",0);
         aux.setSeg(capçalera_est);
         while ((aux.getSeg() != null) && (!trobat)){
-            //System.out.println("ll_est_assigOb: "+dni);
             if (aux.getSeg().getDNI() == dni){
                 trobat = true;
             }

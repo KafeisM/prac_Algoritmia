@@ -6,6 +6,7 @@ import Assignatures.Assignatures;
 import Assignatures.Obligatories;
 import Assignatures.ll_assignatures;
 import Estudiants.Estudiants;
+import Excepcions.ErrorAssigNoExistent;
 import practica_1.algorismia.Element;
 import Excepcions.ErrorElementExistent;
 
@@ -56,12 +57,24 @@ public class Cursos extends Element {
     
     public String getAssig_est(int dni){
         String res = "";
-        res += ll_assigOb.getAssig_est(dni).to_String() + " [ Codi: " +
-               ll_assigOb.getAssig_est(dni).getCodi() + " | Credits: "+
-               ll_assigOb.getAssig_est(dni).getCredits() + " ]";
-        res += ll_assigOp.getAssig_est(dni).to_String() + " [ Codi: " +
-               ll_assigOp.getAssig_est(dni).getCodi() + " | Credits: "+
-               ll_assigOp.getAssig_est(dni).getPerfil() + " ]";
+        
+        for (int i = 0; i < ll_assigOb.get_tamany(); i++){
+            if (ll_assigOb.getAssig_est(dni) != null) {
+                res += ll_assigOb.getAssig_est(dni).to_String() + " | Codi: "
+                        + ll_assigOb.getAssig_est(dni).getCodi() + " | Crèdits: "
+                        + ll_assigOb.getAssig_est(dni).getCredits() + "\n";
+
+            }
+        }
+        
+        for (int j = 0; j < ll_assigOp.get_tamany(); j++) {
+            if (ll_assigOp.getAssig_est(dni) != null) {
+                res += ll_assigOp.getAssig_est(dni).to_String() + " | Codi: "
+                        + ll_assigOp.getAssig_est(dni).getCodi() + " | Perfil: "
+                        + ll_assigOp.getAssig_est(dni).getPerfil() + "\n";
+            }
+        }
+
         return res;
     }
        

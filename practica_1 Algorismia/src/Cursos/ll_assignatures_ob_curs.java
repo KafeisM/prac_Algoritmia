@@ -48,21 +48,15 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
         return trobat;
     }
     
-    public Obligatories getAssig_est(int dni){
+    public String getAssig_est(int dni){
         int i;
-        boolean trobat = false;
-        for (i = 0;(i < llista.size()) && (!trobat); i++){
-            //System.out.println("entro");
+        String res = "";
+        for (i = 0;(i < llista.size()); i++){
             if (llista.get(i).getll_Estudiants().cerca_est(dni)){
-                trobat = true;
+                res += llista.get(i).to_String();
             }
         }
-        if (trobat){
-            //System.out.println("ll_ass_ob: " + llista.get(i-1));
-            return llista.get(i-1);
-        }else{
-            return new Obligatories("",0,0);
-        }
+        return res;
     }
 
     @Override

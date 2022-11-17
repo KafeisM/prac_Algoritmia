@@ -22,7 +22,7 @@ public class ll_estudiants implements Interficie_llistes {
         
         while(aux.getSeg() != null){
             System.out.println(aux.getSeg().to_String());
-            llista += (aux.getSeg()).to_String() + " DNI: " + (aux.getSeg()).getDNI() + "\t" ;
+            llista += (aux.getSeg()).to_String() + " | DNI: " + (aux.getSeg()).getDNI() + "\t" ;
             aux.setSeg(aux.getSeg().getSeg());
         }
         

@@ -6,6 +6,7 @@ package Vista;
 
 import java.awt.Color;
 import static practica_1.algorismia.Practica_1Algorismia.assigsicurs_est;
+import static practica_1.algorismia.Practica_1Algorismia.assigsicurs_est2;
 
 /**
  *
