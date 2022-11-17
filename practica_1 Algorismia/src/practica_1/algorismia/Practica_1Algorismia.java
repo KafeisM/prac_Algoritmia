@@ -10,12 +10,7 @@ import Assignatures.ll_assignatures;
 import Cursos.Batxiller;
 import Cursos.Cursos;
 import Cursos.Enum_Cursos;
-import static Cursos.Enum_Cursos.PRIMER;
-import static Cursos.Enum_Cursos.SEGON;
 import Cursos.Enum_Especialitats;
-import static Cursos.Enum_Especialitats.ELECTRÓNICA;
-import static Cursos.Enum_Especialitats.INFORMÀTICA;
-import static Cursos.Enum_Especialitats.MECÀNICA;
 import Cursos.FP;
 import Cursos.ll_cursos;
 import Estudiants.Estudiants;
@@ -87,7 +82,6 @@ public class Practica_1Algorismia {
                     opcio = entrada_Int(menu);
                     break;
                 case 6:
-                    //est_curs_assig();
                     opcio = entrada_Int(menu);
                     break;
                 case 7:
@@ -124,75 +118,7 @@ public class Practica_1Algorismia {
         
     }
     
-    
-    public static void altaCurs(){
-        int num_curs = entrada_Int("Quants de cursos vols introduir? ");
-        int codi;
-        String nom;
-        
-
-        for(int i = 0; i < num_curs; i++){
-            if(entrada_Int("Introduix quin tipus de curs es\n"
-                    + "1. Formació professional\n"
-                    + "2. Batxiller") == 1){
-                //crear curs de FP
-                Enum_Especialitats esp = null;
-                nom = entrada_String("Introdueix el nom del curs");
-                codi = entrada_Int("Introdueix el codi del curs");
-                
-                switch (entrada_Int("Tria una especialitat del FP\n"
-                        + "1. Mecànica\n"
-                        + "2. Electrònica\n"
-                        + "3. Informàtica")){
-                    case 1:
-                        esp = MECÀNICA;
-                        break;
-                    case 2:
-                        esp = ELECTRÓNICA;
-                        break;
-                    case 3:
-                        esp = INFORMÀTICA;
-                        
-                }
-                
-                FP curs_FP = new FP(nom,codi,esp);        
-                
-                introduir_Obligatories(curs_FP);
-                introduir_Optatives(curs_FP);
-                llista_cursos.insertar_element(i, curs_FP);
-                
-                System.out.println("*********************");
-                
-            }else{
-                //crear curs de batxiller
-                Enum_Cursos c = null;
-                nom = entrada_String("Introdueix el nom del curs");
-                codi = entrada_Int("Introdueix el codi del curs");
-                
-                switch (entrada_Int("Tria quin any es de Batxiller\n"
-                        + "1. Primer\n"
-                        + "2. Segon")){
-                    case 1:
-                        c = PRIMER;
-                        break;
-                    case 2:
-                        c = SEGON;
-                        break;
-                    
-                }
-                
-                Batxiller curs_batx = new Batxiller(nom,codi,c);   
-                introduir_Obligatories(curs_batx);
-                introduir_Optatives(curs_batx);
-                llista_cursos.insertar_element(i, curs_batx);
-                System.out.println("*********************");
-                
-            }
-        }
-        
-        
-    }
-    
+   
     private static void baixacurs(){
         String nom_curs = entrada_String("Nom del curs: ");
         llista_cursos.eliminar_element(nom_curs);
@@ -276,41 +202,44 @@ public class Practica_1Algorismia {
               
     }
     
-    public static String est_assig_Curs(String nom_curs){
-        String res="";
+    public static String est_assig_Curs(String nom_curs) {
+        String res = "";
         try {
             Cursos curs = llista_cursos.getCurs(nom_curs);
-            if (curs.getassigOb().get_tamany() == 0){
-                res+= "No hi ha assig. OB";
+            if (curs.getassigOb().get_tamany() == 0) {
+                res += "No hi ha assig. OB";
             }
             //System.out.println("5: " + curs.getassigOb().get_tamany());
-            for (int i=0; i<curs.getassigOb().get_tamany(); i++){
-                res += "Assignatura Obligatoria " + i + ": " + curs.getassigOb().getAssig(i).to_String() 
-                        + " [ Codi: " + curs.getassigOb().getAssig(i).getCodi() + " | Credits: "+
-                        curs.getassigOb().getAssig(i).getCredits()+ " ]" +"\n";
+            for (int i = 0; i < curs.getassigOb().get_tamany(); i++) {
+
+                res += "Assignatura Obligatoria " + i + ": " + curs.getassigOb().getAssig(i).to_String()
+                        + " [ Codi: " + curs.getassigOb().getAssig(i).getCodi() + " | Credits: "
+                        + curs.getassigOb().getAssig(i).getCredits() + " ]" + "\n";
                 res += " " + curs.getassigOb().getAssig(i).ll_toString();
             }
-            res+="\n";
-            if (curs.getassigOp().get_tamany() == 0){
+            res += "\n";
+            if (curs.getassigOp().get_tamany() == 0) {
                 res += "No hi ha assig. OP";
             }
             //System.out.println("5: " + curs.getassigOb().get_tamany());
-            for (int i=0; i<curs.getassigOp().get_tamany(); i++){
-                res += "Assignatura Optativa " + i + ": " + curs.getassigOp().getAssig(i).to_String() 
-                        + " [ Codi: " + curs.getassigOp().getAssig(i).getCodi() + " | Perfil: "+
-                        curs.getassigOp().getAssig(i).getPerfil()+ " ]" +"\n";
+            for (int i = 0; i < curs.getassigOp().get_tamany(); i++) {
+
+                res += "Assignatura Optativa " + i + ": " + curs.getassigOp().getAssig(i).to_String()
+                        + " [ Codi: " + curs.getassigOp().getAssig(i).getCodi() + " | Perfil: "
+                        + curs.getassigOp().getAssig(i).getPerfil() + " ]" + "\n";
                 res += " " + curs.getassigOp().getAssig(i).ll_toString();
             }
-            res+="\n";
+            res += "\n";
         } catch (ErrorElementExistent ex) {
             res += ex.getMessage();    //error curs no existent
         }
-        
+
         return res;
-        
-    } 
-    
-    private static String est_curs_assig(String nom_assig){
+
+    }
+
+
+    public static String est_curs_assig(String nom_assig){
         String res = "";
         try{
             Cursos aux = llista_cursos.getCurs_assig(nom_assig);
@@ -321,9 +250,10 @@ public class Practica_1Algorismia {
             System.out.println("Error: " + e.getMessage());
         }
         return res;
+
     }
     
-    private static String assigsicurs_est(int dni){
+    public static String assigsicurs_est(int dni){
         String res = "";
         int cont = 0;
         for (int i=0;i < llista_cursos.get_tamany(); i++){

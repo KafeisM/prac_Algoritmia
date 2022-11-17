@@ -4,6 +4,9 @@
  */
 package Vista;
 
+import java.awt.Color;
+import static practica_1.algorismia.Practica_1Algorismia.est_curs_assig;
+
 /**
  *
  * @author Usuario
@@ -27,19 +30,72 @@ public class assignatures extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        sortida_assig = new javax.swing.JTextArea();
+        cerca_assig = new javax.swing.JTextField();
+        confirmar_altaCurs = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(0, 0));
         setPreferredSize(new java.awt.Dimension(590, 500));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("prueba 6");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
+        jLabel1.setText("CURS I ESTUDIANTS DE UNA ASSIGNATURA:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 390, 50));
+
+        sortida_assig.setColumns(20);
+        sortida_assig.setRows(5);
+        jScrollPane2.setViewportView(sortida_assig);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 510, 260));
+
+        cerca_assig.setText("Nom de la assignatura");
+        cerca_assig.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cerca_assigMousePressed(evt);
+            }
+        });
+        cerca_assig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerca_assigActionPerformed(evt);
+            }
+        });
+        add(cerca_assig, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 160, -1));
+
+        confirmar_altaCurs.setBackground(new java.awt.Color(51, 102, 255));
+        confirmar_altaCurs.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        confirmar_altaCurs.setForeground(new java.awt.Color(255, 255, 255));
+        confirmar_altaCurs.setText("Confirmar");
+        confirmar_altaCurs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmar_altaCursActionPerformed(evt);
+            }
+        });
+        add(confirmar_altaCurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 100, 40));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cerca_assigMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerca_assigMousePressed
+        cerca_assig.setText("");
+        cerca_assig.setForeground(Color.BLACK);
+    }//GEN-LAST:event_cerca_assigMousePressed
+
+    private void cerca_assigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerca_assigActionPerformed
+
+    }//GEN-LAST:event_cerca_assigActionPerformed
+
+    private void confirmar_altaCursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmar_altaCursActionPerformed
+
+        sortida_assig.setText(est_curs_assig(cerca_assig.getText()));
+    }//GEN-LAST:event_confirmar_altaCursActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cerca_assig;
+    private javax.swing.JButton confirmar_altaCurs;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea sortida_assig;
     // End of variables declaration//GEN-END:variables
 }
