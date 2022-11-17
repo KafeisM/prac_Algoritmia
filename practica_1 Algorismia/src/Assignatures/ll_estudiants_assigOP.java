@@ -20,14 +20,17 @@ public class ll_estudiants_assigOP implements Interficie_llistes {
 
     @Override
     public String ll_toString() {
-        String res = "";
-        Estudiants aux = new Estudiants("zzz",0);
+        String llista = "";
+        Estudiants aux = new Estudiants("s",0);
         aux.setSeg(capçalera_est);
-        while (aux.getSeg()!=null){
-            res += "| [" + aux.getSeg().to_String() + "] ";
+        
+        while(aux.getSeg() != null){
+            System.out.println(aux.getSeg().to_String());
+            llista += (aux.getSeg()).to_String() + " | DNI: " + (aux.getSeg()).getDNI() + "\t" ;
             aux.setSeg(aux.getSeg().getSeg());
         }
-        return res;
+        
+        return llista;
     }
 
     @Override
