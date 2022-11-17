@@ -102,7 +102,7 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
 
     @Override
     public void eliminar_element(String nom) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        llista.remove(this.getAssig(nom));
     }
 
   

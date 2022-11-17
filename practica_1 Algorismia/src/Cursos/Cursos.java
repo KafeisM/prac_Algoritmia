@@ -44,6 +44,16 @@ public class Cursos extends Element {
         }
     }
     
+    //eliminar assignatures de la llista propia donat el seu nom
+    public void elimiar_ass(String nom, Assignatures a){
+         if(a instanceof Obligatories){
+           ll_assigOb.eliminar_element(nom);
+       }else{
+           ll_assigOp.eliminar_element(nom);
+       }       
+    }
+
+    
     public String getAssig_est(int dni){
         String res = "";
         res += ll_assigOb.getAssig_est(dni).to_String() + " [ Codi: " +

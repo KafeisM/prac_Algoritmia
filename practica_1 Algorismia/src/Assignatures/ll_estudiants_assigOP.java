@@ -1,7 +1,6 @@
 
 package Assignatures;
 
-import Cursos.Cursos;
 import Estudiants.Estudiants;
 import practica_1.algorismia.Element;
 import Excepcions.ErrorElementExistent;

@@ -68,7 +68,17 @@ public class Practica_1Algorismia {
     }
 
     public static void baixaAssig(String nom_assig) {
-        llista_assignatures.eliminar_element(nom_assig);
+        try {
+            
+            //donar baixa de la llista obligatoria o optativa
+            llista_cursos.getCurs_assig(nom_assig).elimiar_ass(nom_assig,llista_assignatures.getAssig(nom_assig));
+            //donar baixa llista general
+            llista_assignatures.eliminar_element(nom_assig);
+        } catch (ErrorAssigNoExistent ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
     }
 
     private static void introduir_Obligatories(Cursos c) {
