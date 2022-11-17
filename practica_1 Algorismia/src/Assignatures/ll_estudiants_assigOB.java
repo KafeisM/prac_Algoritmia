@@ -87,7 +87,7 @@ public class ll_estudiants_assigOB implements Interficie_llistes {
         return existeix;
     }
     
-    private ll_estudiants_assigOB ordenar() throws ErrorElementExistent{
+    public ll_estudiants_assigOB ordenar() throws ErrorElementExistent{
         Estudiants aux = new Estudiants("s",0);
         aux.setSeg(capçalera_est);
         ArrayList<Estudiants> ArrayAux = new ArrayList<Estudiants>();

@@ -4,6 +4,8 @@ package Assignatures;
 import Estudiants.Estudiants;
 import practica_1.algorismia.Element;
 import Excepcions.ErrorElementExistent;
+import java.util.ArrayList;
+import java.util.Collections;
 import practica_1.algorismia.Interficie_llistes;
 
 /**
@@ -85,18 +87,23 @@ public class ll_estudiants_assigOP implements Interficie_llistes {
         return existeix;
     }
     
-    private void ordenar(){
+    public ll_estudiants_assigOP ordenar() throws ErrorElementExistent{
         Estudiants aux = new Estudiants("s",0);
         aux.setSeg(capçalera_est);
-        
-        while((aux.getSeg() != null) && (aux.getSeg().getSeg()!=null)){
-            if(aux.getSeg().to_String().compareTo(aux.getSeg().getSeg().to_String()) > 0){
-                capçalera_est = aux.getSeg().getSeg();
-                aux.getSeg().setSeg(capçalera_est.getSeg());
-                capçalera_est.setSeg(aux.getSeg());
-            }
+        ArrayList<Estudiants> ArrayAux = new ArrayList<Estudiants>();
+        for(int i = 0; i<this.get_tamany();i++){
+            ArrayAux.add(aux.getSeg());
             aux.setSeg(aux.getSeg().getSeg());
         }
+
+        Collections.sort(ArrayAux, Collections.reverseOrder());
+        
+        ll_estudiants_assigOP llistaAux = new ll_estudiants_assigOP();
+        
+        for(int i = 0; i<ArrayAux.size();i++){
+            llistaAux.insertar_element(i, ArrayAux.get(i));
+        }
+        return llistaAux;
     }
 
     @Override
