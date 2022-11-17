@@ -64,7 +64,7 @@ public class ll_estudiants_assigOB implements Interficie_llistes {
             Estudiants aux  = (Estudiants) el;
             aux.setSeg(capçalera_est);
             capçalera_est = aux;
-            ordenar();
+            //ordenar();
         }
         
     }
@@ -84,15 +84,24 @@ public class ll_estudiants_assigOB implements Interficie_llistes {
     
     private void ordenar(){
         Estudiants aux = new Estudiants("s",0);
+        Estudiants aux2;
         aux.setSeg(capçalera_est);
         
+        
         while((aux.getSeg() != null) && (aux.getSeg().getSeg()!=null)){
+            
             if(aux.getSeg().to_String().compareTo(aux.getSeg().getSeg().to_String()) > 0){
-                capçalera_est = aux.getSeg().getSeg();
-                aux.getSeg().setSeg(capçalera_est.getSeg());
+                
+                System.out.println("aux: " + aux.getSeg().obtenir_nom());
+                if (capçalera_est.obtenir_nom() == aux.getSeg().obtenir_nom()){
+                    capçalera_est = aux.getSeg().getSeg();
+                }
+                aux2 = aux.getSeg().getSeg();
+                aux.getSeg().setSeg(aux.getSeg().getSeg().getSeg());
                 capçalera_est.setSeg(aux.getSeg());
+            }else{
+                aux.setSeg(aux.getSeg().getSeg());
             }
-            aux.setSeg(aux.getSeg().getSeg());
         }
     }
 

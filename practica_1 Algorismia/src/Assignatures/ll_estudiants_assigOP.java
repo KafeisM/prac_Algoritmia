@@ -64,7 +64,7 @@ public class ll_estudiants_assigOP implements Interficie_llistes {
             Estudiants aux  = (Estudiants) el;
             aux.setSeg(capçalera_est);
             capçalera_est = aux;
-            ordenar();
+            //ordenar();
         }
         
     }

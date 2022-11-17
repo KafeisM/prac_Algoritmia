@@ -169,7 +169,7 @@ public class Practica_1Algorismia {
                 res += "Assignatura Obligatoria " + i + ": " + curs.getassigOb().getAssig(i).to_String()
                         + " [ Codi: " + curs.getassigOb().getAssig(i).getCodi() + " | Credits: "
                         + curs.getassigOb().getAssig(i).getCredits() + " ]" + "\n";
-                res += "" + curs.getassigOb().getAssig(i).ll_toString();
+                res += "" + curs.getassigOb().getAssig(i).ll_toString() + "\n";
             }
             res += "\n";
             if (curs.getassigOp().get_tamany() == 0) {
@@ -181,7 +181,7 @@ public class Practica_1Algorismia {
                 res += "Assignatura Optativa " + i + ": " + curs.getassigOp().getAssig(i).to_String()
                         + " [ Codi: " + curs.getassigOp().getAssig(i).getCodi() + " | Perfil: "
                         + curs.getassigOp().getAssig(i).getPerfil() + " ]" + "\n";
-                res += "" + curs.getassigOp().getAssig(i).ll_toString();
+                res += "" + curs.getassigOp().getAssig(i).ll_toString() + "\n";
             }
             res += "\n";
         } catch (ErrorElementExistent ex) {
