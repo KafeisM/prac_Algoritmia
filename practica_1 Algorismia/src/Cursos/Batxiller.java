@@ -1,8 +1,5 @@
 package Cursos;
 
-import Assignatures.Assignatures;
-import Assignatures.Obligatories;
-
 /**
  *
  * @author Jordi
@@ -17,6 +14,7 @@ public class Batxiller extends Cursos{
         this.curs = curs;
     }
     
+    @Override
     public String getEspecialitat(){
         return curs.toString();
     }

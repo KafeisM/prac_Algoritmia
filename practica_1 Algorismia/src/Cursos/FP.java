@@ -14,6 +14,7 @@ public class FP extends Cursos{
         this.especialitat = esp;
     }
     
+    @Override
     public String getEspecialitat(){
         return especialitat.toString();
     }
