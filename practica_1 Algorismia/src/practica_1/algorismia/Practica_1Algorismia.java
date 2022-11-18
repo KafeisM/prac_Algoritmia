@@ -142,6 +142,8 @@ public class Practica_1Algorismia {
                 Estudiants est2 = new Estudiants(nom_estudiant, DNI);
                 llista_estudiants.insertar_element(0, est2);
                 llista_estudiants = llista_estudiants.ordenar();
+                
+                //eliminar
                 System.out.println(llista_estudiants.ll_toString());
             }
 

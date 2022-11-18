@@ -2,7 +2,6 @@
 package Assignatures;
 
 import Estudiants.Estudiants;
-import Estudiants.ll_estudiants;
 import practica_1.algorismia.Element;
 import Excepcions.ErrorElementExistent;
 import java.util.ArrayList;
@@ -69,6 +68,7 @@ public class ll_estudiants_assigOB implements Interficie_llistes {
             Estudiants aux  = (Estudiants) el;
             aux.setSeg(capçalera_est);
             capçalera_est = aux;
+            
             
         }
         
