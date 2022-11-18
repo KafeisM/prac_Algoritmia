@@ -1,6 +1,10 @@
 package Assignatures;
 
+import Estudiants.Estudiants;
+import Estudiants.ll_estudiants;
 import Excepcions.ErrorAssigNoExistent;
+import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JOptionPane;
 import practica_1.algorismia.Element;
 import practica_1.algorismia.Interficie_llistes;
@@ -78,19 +82,23 @@ public class ll_assignatures implements Interficie_llistes{
         capçalera_assig = aux;        
     }
 
-    private void ordenar(){
+    public ll_assignatures ordenar(){
  
         Assignatures aux = new Assignatures("s",0);
         aux.setSeg(capçalera_assig);
         
-        while(aux.getSeg() != null){
-            if(aux.getCodi() > aux.getSeg().getCodi()){
-                aux.getSeg().setSeg(aux.getSeg().getSeg());
-                aux.getSeg().getSeg().setSeg(aux);
-                capçalera_assig = aux.getSeg().getSeg();
-            }
+        ArrayList<Assignatures> ArrayAux = new ArrayList<Assignatures>();
+        for(int i = 0; i<this.get_tamany();i++){
+            ArrayAux.add(aux.getSeg());
             aux.setSeg(aux.getSeg().getSeg());
         }
+
+        Collections.sort(ArrayAux);
+        ll_assignatures llistaAux = new ll_assignatures();
+        for(int i = 0; i<ArrayAux.size();i++){
+            llistaAux.insertar_element(i, ArrayAux.get(i));
+        }
+        return llistaAux;
     }
 
     @Override

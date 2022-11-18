@@ -7,6 +7,7 @@ import Estudiants.Estudiants;
 import java.util.ArrayList;
 import practica_1.algorismia.Element;
 import Excepcions.ErrorElementExistent;
+import java.util.Collections;
 import practica_1.algorismia.Interficie_llistes;
 
 /**
@@ -21,6 +22,9 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
         llista = new ArrayList <Obligatories>();
     }
     
+    private void ordenar(){
+        Collections.sort(llista);
+    }
     
     public Obligatories getAssig(int pos){
         return llista.get(pos);
@@ -83,6 +87,7 @@ public class ll_assignatures_ob_curs implements Interficie_llistes {
     @Override
     public void insertar_element(int i, Element el) {
         llista.add(i, (Obligatories) el);
+        this.ordenar();
     }
     
     public void insertar_est_assig(Estudiants est, Assignatures assig) throws ErrorElementExistent{

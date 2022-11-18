@@ -3,12 +3,11 @@ package Cursos;
 
 import Assignatures.Assignatures;
 import Assignatures.Optatives;
-import Assignatures.Perfil;
 import Estudiants.Estudiants;
-import Excepcions.ErrorAssigNoExistent;
 import java.util.ArrayList;
 import practica_1.algorismia.Element;
 import Excepcions.ErrorElementExistent;
+import java.util.Collections;
 import practica_1.algorismia.Interficie_llistes;
 
 /**
@@ -26,6 +25,10 @@ public class ll_assignatures_op_curs implements Interficie_llistes {
     
     public Optatives getAssig(int pos){
         return llista.get(pos);
+    }
+    
+    private void ordenar(){
+        Collections.sort(llista);
     }
     
     public Optatives getAssig(String nom_assig){
@@ -73,6 +76,7 @@ public class ll_assignatures_op_curs implements Interficie_llistes {
     @Override
     public void insertar_element(int i, Element el) {
         llista.add(i,(Optatives) el);
+        this.ordenar();
     }
 
     public void insertar_est_assig(Estudiants est, Assignatures assig) throws ErrorElementExistent{

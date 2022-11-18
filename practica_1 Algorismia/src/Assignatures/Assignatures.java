@@ -1,12 +1,13 @@
 package Assignatures;
 
+import Estudiants.Estudiants;
 import practica_1.algorismia.Element;
 
 /**
  *
  * @author jordi
  */
-public class Assignatures extends Element{
+public class Assignatures extends Element implements Comparable<Assignatures>{
    
     protected int codi_assignatura;
     protected Assignatures seg;
@@ -32,4 +33,11 @@ public class Assignatures extends Element{
      public String to_String(){
         return this.obtenir_nom();
     }
+
+    @Override
+    public int compareTo(Assignatures o) {
+        return this.to_String().compareTo(o.to_String());
+    }
+
+    
 }

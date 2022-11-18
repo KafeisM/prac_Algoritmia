@@ -69,6 +69,8 @@ public class Practica_1Algorismia {
             llista_cursos.getCurs_assig(nom_assig).elimiar_ass(nom_assig,llista_assignatures.getAssig(nom_assig));
             //donar baixa llista general
             llista_assignatures.eliminar_element(nom_assig);
+            llista_assignatures = llista_assignatures.ordenar();
+            
         } catch (ErrorAssigNoExistent ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
@@ -90,6 +92,7 @@ public class Practica_1Algorismia {
             Obligatories ass_Ob = new Obligatories(nom, codi, credits);
             c.afegir_ass(ass_Ob, j); //afegir a la llista de obligatories del curs
             llista_assignatures.insertar_element(j, ass_Ob);
+            llista_assignatures = llista_assignatures.ordenar();
 
         }
 
@@ -122,6 +125,7 @@ public class Practica_1Algorismia {
             c.afegir_ass(ass_Op, j); //afegir a la llista de optatives del curs
 
             llista_assignatures.insertar_element(j, ass_Op);
+            llista_assignatures = llista_assignatures.ordenar();
 
         }
         System.out.println("*********************");
