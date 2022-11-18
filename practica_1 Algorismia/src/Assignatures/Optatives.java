@@ -41,6 +41,7 @@ public class Optatives extends Assignatures{
     
     public void insertar_est(Estudiants est) throws ErrorElementExistent{
         llista_est.insertar_element(0, est);
+        llista_est = llista_est.ordenar();
     }
     
 }
